@@ -97,6 +97,12 @@ summary{padding:6px 0;min-height:36px}
 <p class="section-intro">I write in Chinese about model training, evaluation and my research. Also on <a href="https://www.zhihu.com/people/cai-hua-si-yi-ru-wo">Zhihu ↗</a>.</p>
 <div class="writing-list">
 <article class="writing-entry">
+<div class="meta">ASR experiment · 2026-09-28 · 中文</div>
+<h3 lang="zh-CN"><a href="/notes/whisper-beam/">beam 从 1 改成 5：40 条录音里，哪些结果变了？</a></h3>
+<p lang="zh-CN">固定 Whisper tiny.en 和真实录音：3 条 CER 改善、37 条不变，附原始输出与复现脚本。</p>
+<div class="project-links"><a href="/notes/whisper-beam/">Read the experiment</a><span class="separator" aria-hidden="true">/</span><a href="/notes/whisper-beam/report/">Compare all 40 samples</a></div>
+</article>
+<article class="writing-entry">
 <div class="meta">LLM evaluation · Q&amp;A · 中文</div>
 <h3 lang="zh-CN"><a href="https://www.zhihu.com/question/629846408/answer/2086466731988480729">如何评估 LLM？</a></h3>
 <p lang="zh-CN">同样是 60% 的正确率，模型可能错在完全不同的题上。</p>
@@ -123,7 +129,7 @@ summary{padding:6px 0;min-height:36px}
 <h2 id="projects-title">Personal projects</h2>
 <article class="project">
 <figure class="figure"><a href="https://github.com/qiangzhang-dev/speech-eval-demo/blob/main/docs/architecture.svg" aria-label="View full speech evaluation architecture"><img class="architecture" src="https://raw.githubusercontent.com/qiangzhang-dev/speech-eval-demo/main/docs/architecture.svg" alt="Speech evaluation pipeline from input validation to metrics, diagnostics, and reports" width="1400" height="720"></a><figcaption>Evaluation pipeline · view full diagram</figcaption></figure>
-<div><h3><a href="https://github.com/qiangzhang-dev/speech-eval-demo">Speech Evaluation Demo</a></h3><div class="meta">Python / SQLite / Speech evaluation</div><p>A local tool for comparing reference transcripts with recognition outputs. It calculates character error rate and shows the insertions, deletions and substitutions behind each score.</p><p>Compare two transcript versions on the same references, filter regressions, and inspect character edits. Includes synthetic examples and local CSV import.</p><div class="project-links"><a href="/speech-eval/">results demo</a><span class="separator" aria-hidden="true">/</span><a href="/speech-eval/compare/">version comparison</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo">code</a><span class="separator">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo#readme">documentation</a></div></div>
+<div><h3><a href="https://github.com/qiangzhang-dev/speech-eval-demo">Speech Evaluation Demo</a></h3><div class="meta">Python / SQLite / Speech evaluation</div><p>A local tool for comparing reference transcripts with recognition outputs. It calculates character error rate and shows the insertions, deletions and substitutions behind each score.</p><p>Compare two transcript versions on the same references, filter regressions, and inspect character edits. Includes synthetic examples and local CSV import.</p><div class="project-links"><a href="/notes/whisper-beam/">audio experiment</a><span class="separator" aria-hidden="true">/</span><a href="/speech-eval/compare/">version comparison</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo">code</a><span class="separator">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo#readme">documentation</a></div></div>
 </article>
 <article class="project">
 <figure class="figure"><div class="screens"><img src="https://raw.githubusercontent.com/qiangzhang-dev/subtracker/main/docs/dashboard.png" alt="SubTracker dashboard screenshot" width="76" height="150" loading="lazy"><img src="https://raw.githubusercontent.com/qiangzhang-dev/subtracker/main/docs/list.png" alt="SubTracker subscription list screenshot" width="76" height="150" loading="lazy"></div><figcaption>Dashboard and subscription list</figcaption></figure>
