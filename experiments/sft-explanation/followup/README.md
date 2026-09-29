@@ -55,3 +55,10 @@ The token-budget difference between explained and answer-only training remains. 
 All four adapter original-input outputs exactly match their earlier 128-token outputs (48/48 each). None of the 480 responses reached 512 tokens. Six records required quoted review; one baseline/reworded response gave only an uninstantiated symbolic expression and was not counted as a final numerical answer. The scores above include that unresolved case in the denominator.
 
 On this particular rewording set, all four fine-tuned checkpoints score below the original instruction model, even though the explained checkpoints retain an advantage over answer-only checkpoints. High scores on the original templates therefore did not carry over intact. This does not establish the mechanism or generalize beyond this narrow experiment.
+
+
+## Article
+
+A Chinese walkthrough of both rounds: [SFT 原题高分，换个问法会怎样？一次小模型实测](https://zhuanlan.zhihu.com/p/2088312597007409375).
+
+The publication source is preserved in `zhihu-article.html`; raw experiment records remain unchanged.

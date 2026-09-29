@@ -1,0 +1,55 @@
+<p>第一轮 SFT 跑完，保留解释的两个模型在 36 道题上分别答对了 32 道、35 道。只看这组数字，很容易觉得效果已经不错。</p>
+<p>但这些题沿用了训练集的模板，只换了数值组合。我接着做了一件事：不再训练，把测试题换一种英文表述，数学条件和答案保持不变，再测同一批模型。</p>
+<p>两个模型都变成了 17/36。没有继续微调的原模型，在这套改写题上反而是 24/36。</p>
+<p>这次小实验最值得记录的，就是前后两张成绩单之间的差距。</p>
+<h2>先说实验怎么做的</h2>
+<p>模型是公开的 Qwen/Qwen2.5-0.5B-Instruct，实验在临时 CPU 环境中完成。数据是合成的英文算术题，不涉及工作中的数据或模型。</p>
+<p>训练集共 96 道题，分三类：库存数量计算、判断商品金额是否达到优惠门槛、先涨再跌的百分比计算。对同一批问题，准备了两种训练答案：</p>
+<ul><li><strong>保留解释：</strong>简短的计算或条件说明，最后给出 Answer: N.</li><li><strong>只留结论：</strong>只给出 Answer: N.</li></ul>
+<p>两组的题目和正确结果相同，各用随机种子 17、29 训练一次 LoRA，都是 3 个 epoch。每次都从同一个原模型开始，因此一共得到四个微调版本。</p>
+<p>测试使用未出现在训练集中的 36 个数值组合，每类 12 道。这里的“原题”指第一轮测试题，不是训练原题。</p>
+<p>后续为每道测试题写了一种替代表述。数字、条件和末尾的 Answer 格式要求都保留，改的是措辞和信息顺序。这一轮统一使用贪心解码，最多生成 512 个新 token；没有输出触及长度上限。</p>
+<h2>换个问法，结果变了多少？</h2>
+<p>下表只判断<strong>最终给出的数值是否正确</strong>，每格满分都是 36。原模型是未经这次 LoRA 微调的 Instruct 模型。</p>
+<table><thead><tr><th>模型</th><th>原题</th><th>换一种表述</th></tr></thead><tbody>
+<tr><td>原模型</td><td>17/36</td><td>24/36</td></tr>
+<tr><td>保留解释，seed 17</td><td>32/36</td><td>17/36</td></tr>
+<tr><td>保留解释，seed 29</td><td>35/36</td><td>17/36</td></tr>
+<tr><td>只留结论，seed 17</td><td>16/36</td><td>10/36</td></tr>
+<tr><td>只留结论，seed 29</td><td>17/36</td><td>5/36</td></tr>
+</tbody></table>
+<p>保留解释的模型依然高于只留结论的模型，但四个微调版本在这套改写题上的得分，都低于原模型。</p>
+<p>变化也不均匀。保留解释的两个模型，库存题在改写前后都是 12/12；百分比题则分别从 9/12、11/12 变成了 0/12。只看总分，会漏掉这种差别。</p>
+<h2>看一道具体的题</h2>
+<p>优惠题中有这样一条：商品金额 170 美元，运费 15 美元。只有商品金额达到 180 美元，才能减 20 美元；运费不参与门槛判断。问优惠金额是多少。</p>
+<p>答案是 0。下面是原题的英文输入：</p>
+<blockquote><p>A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 170 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: &lt;number&gt;'.</p></blockquote>
+<p>保留解释、seed 17 的模型回答：</p>
+<blockquote><p>Only the item subtotal of 170 counts; the 15-dollar shipping charge is excluded. 170 is below 180, so the discount is 0 dollars. Answer: 0.</p></blockquote>
+<p>改写后的输入是：</p>
+<blockquote><p>The item subtotal on an order is 170 dollars, and delivery costs 15 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: &lt;number&gt;'.</p></blockquote>
+<p>同一个模型变成了：</p>
+<blockquote><p>Only if 170 ≤ subtotal ≤ 180, 165 applies; otherwise, 0 applies. Answer: 165.</p></blockquote>
+<p>条件没有变，运费仍被明确排除，模型却给出了 165。它还在输出解释，也保留了 Answer 字段，但这次解释和答案都出了问题。</p>
+<p>这一个例子解释不了全部降分原因，却足以提醒我：输出结构看着熟悉，不代表模型还在正确处理题目的条件。</p>
+<h2>另一个问题出在评分里</h2>
+<p>最初的脚本主要依赖 Answer: 数字 来提取答案。后来检查原始输出，发现原模型有时会把正确结果写在方框或末尾句子里，没有使用指定字段。</p>
+<p>对<strong>同一批原模型的 512-token 输出</strong>，旧规则只算出 2/36；按最终数值重新核对，则是 17/36。模型没有变，变的是评分口径。</p>
+<p>例如一道库存题，8 × 11 − 2 的结果是 86。模型给出了方框里的 86，但缺少 Answer 标记，旧规则就没把它计为正确。</p>
+<p>脚本还会误取算式里的第一个数字。某条输出末尾是 Answer: $230 - $46 = $184.，旧提取器读成了 230，而模型最终声称的数值其实是 184。这道题的正确答案是 20，两种解析都不能算对，但记录下来的错误答案也应该准确。</p>
+<p>因此，这一轮把两件事拆开记录：</p>
+<ul><li>是否用规定的末尾 Answer 字段给出数值；</li><li>最终声称的数值是否正确。</li></ul>
+<p>改写后，四个微调版本的格式合规数量仍是 36、35、36、36 道，但数值正确数量已经降到 17、17、10、5 道。格式稳定和答案稳定，确实是两回事。</p>
+<p>数值提取器不接收标准答案；6 条需要额外核对的输出保留了复核理由。不过复核没有做模型身份盲评，也没有独立标注者。还有一条只给出符号表达式、没有代入最终数值的输出，保留在分母中，未计为数值正确；这不等于判定它的符号公式错误。</p>
+<h2>这次结果能说明到哪一步？</h2>
+<p>能直接看到的是：<strong>这批模型在固定模板上的高分，没有完整保留到这套替代表述上。</strong></p>
+<p>还不能据此说“删掉解释就会损害推理能力”。保留解释的一组，每次训练累计参与监督的 token 是 13,974，只留结论的一组是 2,349。前者不仅多了计算说明，也重复了题目信息；训练信号的数量和内容都不同，不能把差异单独归因于“解释”这一个因素。</p>
+<p>模型也只有 0.5B，训练题只有 96 道，每题只做了一种替代表述。这里判断的是最终数值，不是逐步推理是否严密，更不是实际语音交互效果。附带的 12 道基础探针同样不足以代表通用能力保持。</p>
+<p>所以我暂时不把这组结果概括成关于 SFT 的普遍结论。对后续数据修改，更实用的做法是：留住原始输出，给测试题准备成对的问法，把格式错误和内容错误分开。看到分数上升后，还要再看一眼，模型究竟在哪些题上变好了。</p>
+<p>完整记录已经公开，包含训练配置、合成数据、逐条输出、评分代码和复核记录。后续页面可以按题型筛选，并展开查看改写前后的回答：</p>
+<ul>
+<li><a href="https://qiangzhang-dev.github.io/experiments/sft-explanation/followup/">换问法与评分复核：完整结果及逐题对照</a></li>
+<li><a href="https://qiangzhang-dev.github.io/experiments/sft-explanation/results/">第一轮：保留解释与只留结论的 SFT 对照</a></li>
+<li><a href="https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/experiments/sft-explanation">GitHub：实验代码与原始记录</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/2088274090624824483">上一篇：训练答案改写后，怎么检查它还适不适合做 SFT？</a></li>
+</ul>
