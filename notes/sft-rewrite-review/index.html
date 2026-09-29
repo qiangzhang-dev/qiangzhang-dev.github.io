@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>训练答案改写后，怎么检查它还适不适合做 SFT？ · Nate Zhang</title><meta name="description" content="用构造案例检查 SFT 答案改写中的条件遗漏、解释缺失、确定性变化和输入信息缺口。"><link rel="canonical" href="https://qiangzhang-dev.github.io/notes/sft-rewrite-review/"><style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#30343b;font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:820px;padding:42px 28px 70px;margin:auto}nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;margin-bottom:40px}a{color:#1766aa;text-underline-offset:4px}a:focus-visible{outline:2px solid #1766aa;outline-offset:4px}h1{text-wrap:balance;font-size:clamp(28px,5vw,36px);line-height:1.45;letter-spacing:-.025em;color:#181b20;margin:0 0 18px}h1+p{color:#717983;font-size:14px;margin-bottom:32px}h2{font-size:23px;line-height:1.5;margin:36px 0 14px;color:#242a32}p{margin:16px 0}strong{font-weight:600}table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:15px;margin:24px 0}th,td{padding:12px 14px;border-bottom:1px solid #e4e8ed;text-align:left;min-width:95px;vertical-align:top}thead{background:#f5f7fa}code{font-size:.88em;background:#f3f5f7;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#f3f5f7}pre code{padding:0}ul{padding-left:24px}li{margin:12px 0}footer{border-top:1px solid #e4e8ed;padding-top:20px;margin-top:38px;color:#717983;font-size:13px}@media(max-width:600px){main{padding:26px 18px 50px}body{font-size:16px}nav{margin-bottom:30px}th,td{padding:10px 8px}table{font-size:14px}h2{font-size:21px}}@media print{nav,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}table{display:table}}
+</style></head><body><main><nav aria-label="文章导航"><a href="/">Nate / 个人网站</a><a href="/#writing">全部文章</a></nav><article><h1>训练答案改写后，怎么检查它还适不适合做 SFT？</h1><p>2026-09-29 · Qiang (Nate) Zhang</p><p>一条训练答案改完，读起来更顺，最终结论也没变，是不是就可以拿去做 SFT？</p>
+<p>还不够。得把问题、上下文、原答案和改写答案放在一起，看它现在示范的还是不是同一种作答行为。</p>
+<p>上一篇讨论了<a href="https://zhuanlan.zhihu.com/p/2086404159851467671">口语化 SFT 为什么可能影响能力</a>。这篇只处理训练前的一步：检查改写数据。下面都是为说明问题构造的例子，不是模型实测结果。</p>
+<h2>先分清：修正答案，还是调整表达</h2>
+<p>假设任务要求只调整表达，原答案却算错了。改写模型把它纠正，内容质量可能提高，但这条样本已经同时发生了“风格调整”和“答案修正”。</p>
+<p>修正后的答案可以另行核验再用；如果要研究风格改写本身的影响，就应把这种样本单独标出。否则比较两批数据时，正确率变化也被混在里面了。</p>
+<p>我会先检查原答案是否成立，再核对改写有没有保留必要内容。原答案不是天然正确的标准答案。</p>
+<h2>条件少了，答案适用的范围就变了</h2>
+<p><strong>问题：</strong>某项虚构活动的规则是：“周末，单笔实付满 200 元减 20 元，运费不计入门槛。”周六商品实付 190 元，运费 15 元，能参加吗？</p>
+<p><strong>原答案：</strong>不能。运费不计入门槛，商品实付只有 190 元，没满 200 元。</p>
+<p><strong>改写：</strong>不能，你这单没满 200 元。</p>
+<p>结论仍然正确，但用户付了 205 元，改写却没有解释为什么“不满”。删掉的正是这道题容易误解的条件。</p>
+<p><strong>更合适的改写：</strong>不能，运费不算。商品实付是 190 元，还差 10 元。</p>
+<p>这里要保留的不是原句措辞，而是判断门槛的依据。如果用户明确要求只回答“能”或“不能”，单独一句“不能”又可能完全合适。检查必须带着任务要求。</p>
+<h2>结论没变，也要看解释是否还满足要求</h2>
+<p><strong>问题：</strong>一个数先增加 20%，再减少 20%，会回到原值吗？请用 100 举例解释。</p>
+<p><strong>原答案：</strong>不会。100 增加 20% 是 120，再减少的是 120 的 20%，也就是 24，最后是 96。</p>
+<p><strong>改写：</strong>不会，最后是 96。</p>
+<p>96 没错，但“用 100 举例解释”的要求没有完成。这里丢失的不只是长度，还有题目要求的依据：第二次变化以 120 为基数。</p>
+<p><strong>更合适的改写：</strong>回不去。100 先涨到 120，再从 120 减掉两成，也就是 24，剩下 96。</p>
+<p>这能说明改写样本漏了什么，不能直接证明模型训练后一定会失去推理能力。短答案也不一定是坏数据；要看目标是简答，还是带解释的作答。</p>
+<h2>“可能”改成“就是”，也属于内容变化</h2>
+<p><strong>问题：</strong>程序连接超时，能确定是服务端挂了吗？</p>
+<p><strong>原答案：</strong>不能确定。服务不可用、网络不通或超时设置过短，都可能导致连接超时，需要结合日志排查。</p>
+<p><strong>改写：</strong>就是服务端挂了，重启一下就行。</p>
+<p>这句话更短、更果断，但它把几个候选原因收缩成了唯一诊断，还新增了一个未经支持的处置建议。不能把这种确定性变化只记为“语气更直接”。</p>
+<p><strong>更合适的改写：</strong>还不能确定，也可能是网络或超时设置的问题。先看日志，再定位原因。</p>
+<p>同样需要注意“通常”变成“总是”、“满足条件时”变成无条件成立，以及建议被改成承诺。</p>
+<h2>答案里的信息，模型输入里真的有吗？</h2>
+<p><strong>输入：</strong>帮我比较 A 和 B 哪个更快。</p>
+<p><strong>原答案：</strong>你指的是哪两个产品？想比较启动速度，还是任务完成时间？</p>
+<p><strong>改写：</strong>B 更快，处理一张图片只要 2 秒，比 A 快一倍。</p>
+<p>只看改写答案，很容易觉得它“直接回答了问题”。但输入没有产品身份、任务或测试结果，答案凭空补齐了这些信息。</p>
+<p>改写时还可能出现更隐蔽的情况：改写器看到了参考答案、完整对话或额外材料，训练样本却只保留最后一句问题。信息对改写器可见，不代表对被训练的模型可见。</p>
+<p>所以要检查最终送进训练的那份输入，连同 system、历史轮次和实际可用的材料一起看。若任务本身需要这些上下文，就补齐合法可用的上下文；若任务要求信息不足时澄清，就保留澄清行为。不能靠一个看起来完整的答案掩盖输入缺失。</p>
+<h2>审核时，要求指出具体哪句话出了问题</h2>
+<p>只打一个“质量 9 分”，后面很难知道该怎么修。我更倾向于让审核结果至少留下这些信息：</p>
+<ul><li>样本 ID，以及本次允许修改的范围。</li><li>原答案是否正确；不确定的地方需要什么证据。</li><li>改写中有问题的原句、对应的输入依据，以及改动类型。</li><li>处理决定：保留、返修、单独作为内容修正样本，或暂时搁置。</li></ul>
+<p>第一例可以记为：“删去了运费不计入门槛这一必要依据；结论正确，但解释容易与用户实际支付的 205 元冲突；补回条件。”第二例则是“缺少题目明确要求的计算解释”。这比两个样本都标成“不够完整”更容易落实。</p>
+<p>用模型协助审核时，我会先让它看完整输入与改写答案，检查能否独立成立，再展示原答案做差异核对。这样设计是为了减少直接把原答案当作标准的倾向；是否有效，需要用人工标注样本验证。数字和单位比对可以提示可疑位置，不能机械要求字面一致：1000 米和 1 公里可能等价，20% 和减少 20 个百分点则不是一回事。</p>
+<h2>文本检查通过，还要看实际监督到了什么</h2>
+<p>SFT 使用示范答案进行监督训练；常见实现以 token 级交叉熵为目标。损失计算在哪些位置，是另一层需要核对的事情。以 TRL 的 SFTTrainer 为例，completion-only 与 assistant-only loss 控制的范围并不相同。[1][2]</p>
+<p>在实际训练预处理后，抽查几条样本：聊天模板是否正确、答案有没有被截断、哪些 token 参与损失、结束标记是否符合配置。多轮数据尤其要看清楚训练的是哪些 assistant 轮次。原始文件里的答案完整，不代表最终送入模型的监督内容完整。</p>
+<p>这篇里的检查只能帮助发现训练数据的问题。要判断一版改写是否值得使用，仍要在独立评测集上分别看正确性、指令遵循和表达效果。若目标应用是语音交互，还应在固定播报条件下听一遍，检查指代和数字是否容易听懂。</p>
+<p>我希望审核记录最后能回答一个具体问题：这条答案到底改了什么，为什么保留它？能说清楚这一点，再去解释训练结果，才有可以追溯的依据。</p>
+<h2>参考资料</h2>
+<p>[1] Ouyang et al., <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback</a>，2022。用于说明示范数据与 SFT 的关系。</p>
+<p>[2] Hugging Face，<a href="https://huggingface.co/docs/trl/sft_trainer">TRL SFTTrainer 文档</a>，查阅于 2026-09-29。用于核对训练损失和监督范围；具体选项应以使用的版本为准。</p>
+<p>本文的案例与审核建议是方法讨论，以上资料不构成这些建议已经改善训练效果的实验证据。</p></article><footer>Qiang (Nate) Zhang · <a href="/">返回个人网站</a></footer></main></body></html>
