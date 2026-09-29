@@ -1,0 +1,866 @@
+[
+  {
+    "id": "discount-180-25-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 180 dollars and shipping is 25 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 180 counts; the 25-dollar shipping charge is excluded. 180 is below 200, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 180 counts; the 25-dollar shipping charge is excluded. 180 is below 200, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-220-15-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 15-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 15-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-170-30-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 170 dollars and shipping is 30 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 170 counts; the 30-dollar shipping charge is excluded. 170 is below 180, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 170 counts; the 30-dollar shipping charge is excluded. 170 is below 180, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-160-35-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 160 dollars and shipping is 35 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 160 counts; the 35-dollar shipping charge is excluded. 160 is below 200, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 160 counts; the 35-dollar shipping charge is excluded. 160 is below 200, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-230-35-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 230 dollars and shipping is 35 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 230 counts; the 35-dollar shipping charge is excluded. 230 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 230 counts; the 35-dollar shipping charge is excluded. 230 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-200-20-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 200 dollars and shipping is 20 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 200 counts; the 20-dollar shipping charge is excluded. 200 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 200 counts; the 20-dollar shipping charge is excluded. 200 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-200-40-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 200 dollars and shipping is 40 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 200 counts; the 40-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 200 counts; the 40-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-190-15-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 190 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 190 counts; the 15-dollar shipping charge is excluded. 190 is below 200, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 190 counts; the 15-dollar shipping charge is excluded. 190 is below 200, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-220-30-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 30 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 30-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 30-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-180-20-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 180 dollars and shipping is 20 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 180 counts; the 20-dollar shipping charge is excluded. 180 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 180 counts; the 20-dollar shipping charge is excluded. 180 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-150-30-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 150 dollars and shipping is 30 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 150 counts; the 30-dollar shipping charge is excluded. 150 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 150 counts; the 30-dollar shipping charge is excluded. 150 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-230-35-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 230 dollars and shipping is 35 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 230 counts; the 35-dollar shipping charge is excluded. 230 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 230 counts; the 35-dollar shipping charge is excluded. 230 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-200-15-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 200 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 200 counts; the 15-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 200 counts; the 15-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-190-10-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 190 dollars and shipping is 10 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 190 counts; the 10-dollar shipping charge is excluded. 190 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 190 counts; the 10-dollar shipping charge is excluded. 190 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-210-40-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 210 dollars and shipping is 40 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 210 counts; the 40-dollar shipping charge is excluded. 210 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 210 counts; the 40-dollar shipping charge is excluded. 210 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-220-35-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 35 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 35-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 35-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-220-20-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 20 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 20-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 20-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-210-10-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 210 dollars and shipping is 10 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 210 counts; the 10-dollar shipping charge is excluded. 210 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 210 counts; the 10-dollar shipping charge is excluded. 210 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-220-10-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 10 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 10-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 10-dollar shipping charge is excluded. 220 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-150-10-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 150 dollars and shipping is 10 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 150 counts; the 10-dollar shipping charge is excluded. 150 is below 180, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 150 counts; the 10-dollar shipping charge is excluded. 150 is below 180, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-150-40-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 150 dollars and shipping is 40 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 150 counts; the 40-dollar shipping charge is excluded. 150 is below 180, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 150 counts; the 40-dollar shipping charge is excluded. 150 is below 180, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-180-10-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 180 dollars and shipping is 10 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 180 counts; the 10-dollar shipping charge is excluded. 180 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 180 counts; the 10-dollar shipping charge is excluded. 180 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-160-15-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 160 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 160 counts; the 15-dollar shipping charge is excluded. 160 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 160 counts; the 15-dollar shipping charge is excluded. 160 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-220-30-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 220 dollars and shipping is 30 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 220 counts; the 30-dollar shipping charge is excluded. 220 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 220 counts; the 30-dollar shipping charge is excluded. 220 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-210-40-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 210 dollars and shipping is 40 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 210 counts; the 40-dollar shipping charge is excluded. 210 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 210 counts; the 40-dollar shipping charge is excluded. 210 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-210-30-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 210 dollars and shipping is 30 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 210 counts; the 30-dollar shipping charge is excluded. 210 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 210 counts; the 30-dollar shipping charge is excluded. 210 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-190-35-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 190 dollars and shipping is 35 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 190 counts; the 35-dollar shipping charge is excluded. 190 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 190 counts; the 35-dollar shipping charge is excluded. 190 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-200-25-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 200 dollars and shipping is 25 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 200 counts; the 25-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 200 counts; the 25-dollar shipping charge is excluded. 200 is at least 200, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-190-15-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 190 dollars and shipping is 15 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 20,
+    "explanation": "Only the item subtotal of 190 counts; the 15-dollar shipping charge is excluded. 190 is at least 180, so the discount is 20 dollars.",
+    "explained": "Only the item subtotal of 190 counts; the 15-dollar shipping charge is excluded. 190 is at least 180, so the discount is 20 dollars. Answer: 20.",
+    "answer_only": "Answer: 20."
+  },
+  {
+    "id": "discount-160-25-180",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 180 dollars. Shipping does not count toward the threshold. The items cost 160 dollars and shipping is 25 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 160 counts; the 25-dollar shipping charge is excluded. 160 is below 180, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 160 counts; the 25-dollar shipping charge is excluded. 160 is below 180, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-150-20-220",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 220 dollars. Shipping does not count toward the threshold. The items cost 150 dollars and shipping is 20 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 150 counts; the 20-dollar shipping charge is excluded. 150 is below 220, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 150 counts; the 20-dollar shipping charge is excluded. 150 is below 220, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "discount-180-40-200",
+    "task": "discount",
+    "question": "A shop gives a 20-dollar discount when the item subtotal is at least 200 dollars. Shipping does not count toward the threshold. The items cost 180 dollars and shipping is 40 dollars. How many dollars is the discount? End with 'Answer: <number>'.",
+    "answer": 0,
+    "explanation": "Only the item subtotal of 180 counts; the 40-dollar shipping charge is excluded. 180 is below 200, so the discount is 0 dollars.",
+    "explained": "Only the item subtotal of 180 counts; the 40-dollar shipping charge is excluded. 180 is below 200, so the discount is 0 dollars. Answer: 0.",
+    "answer_only": "Answer: 0."
+  },
+  {
+    "id": "inventory-7-6-2",
+    "task": "inventory",
+    "question": "There are 7 boxes with 6 pencils in each. 2 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 40,
+    "explanation": "There are 7 * 6 = 42 pencils initially. After giving away 2, 42 - 2 = 40 remain.",
+    "explained": "There are 7 * 6 = 42 pencils initially. After giving away 2, 42 - 2 = 40 remain. Answer: 40.",
+    "answer_only": "Answer: 40."
+  },
+  {
+    "id": "inventory-8-8-8",
+    "task": "inventory",
+    "question": "There are 8 boxes with 8 pencils in each. 8 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 56,
+    "explanation": "There are 8 * 8 = 64 pencils initially. After giving away 8, 64 - 8 = 56 remain.",
+    "explained": "There are 8 * 8 = 64 pencils initially. After giving away 8, 64 - 8 = 56 remain. Answer: 56.",
+    "answer_only": "Answer: 56."
+  },
+  {
+    "id": "inventory-11-6-9",
+    "task": "inventory",
+    "question": "There are 11 boxes with 6 pencils in each. 9 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 57,
+    "explanation": "There are 11 * 6 = 66 pencils initially. After giving away 9, 66 - 9 = 57 remain.",
+    "explained": "There are 11 * 6 = 66 pencils initially. After giving away 9, 66 - 9 = 57 remain. Answer: 57.",
+    "answer_only": "Answer: 57."
+  },
+  {
+    "id": "inventory-10-6-9",
+    "task": "inventory",
+    "question": "There are 10 boxes with 6 pencils in each. 9 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 51,
+    "explanation": "There are 10 * 6 = 60 pencils initially. After giving away 9, 60 - 9 = 51 remain.",
+    "explained": "There are 10 * 6 = 60 pencils initially. After giving away 9, 60 - 9 = 51 remain. Answer: 51.",
+    "answer_only": "Answer: 51."
+  },
+  {
+    "id": "inventory-7-9-4",
+    "task": "inventory",
+    "question": "There are 7 boxes with 9 pencils in each. 4 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 59,
+    "explanation": "There are 7 * 9 = 63 pencils initially. After giving away 4, 63 - 4 = 59 remain.",
+    "explained": "There are 7 * 9 = 63 pencils initially. After giving away 4, 63 - 4 = 59 remain. Answer: 59.",
+    "answer_only": "Answer: 59."
+  },
+  {
+    "id": "inventory-9-8-1",
+    "task": "inventory",
+    "question": "There are 9 boxes with 8 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 71,
+    "explanation": "There are 9 * 8 = 72 pencils initially. After giving away 1, 72 - 1 = 71 remain.",
+    "explained": "There are 9 * 8 = 72 pencils initially. After giving away 1, 72 - 1 = 71 remain. Answer: 71.",
+    "answer_only": "Answer: 71."
+  },
+  {
+    "id": "inventory-4-9-1",
+    "task": "inventory",
+    "question": "There are 4 boxes with 9 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 35,
+    "explanation": "There are 4 * 9 = 36 pencils initially. After giving away 1, 36 - 1 = 35 remain.",
+    "explained": "There are 4 * 9 = 36 pencils initially. After giving away 1, 36 - 1 = 35 remain. Answer: 35.",
+    "answer_only": "Answer: 35."
+  },
+  {
+    "id": "inventory-3-11-4",
+    "task": "inventory",
+    "question": "There are 3 boxes with 11 pencils in each. 4 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 29,
+    "explanation": "There are 3 * 11 = 33 pencils initially. After giving away 4, 33 - 4 = 29 remain.",
+    "explained": "There are 3 * 11 = 33 pencils initially. After giving away 4, 33 - 4 = 29 remain. Answer: 29.",
+    "answer_only": "Answer: 29."
+  },
+  {
+    "id": "inventory-5-4-8",
+    "task": "inventory",
+    "question": "There are 5 boxes with 4 pencils in each. 8 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 12,
+    "explanation": "There are 5 * 4 = 20 pencils initially. After giving away 8, 20 - 8 = 12 remain.",
+    "explained": "There are 5 * 4 = 20 pencils initially. After giving away 8, 20 - 8 = 12 remain. Answer: 12.",
+    "answer_only": "Answer: 12."
+  },
+  {
+    "id": "inventory-4-7-3",
+    "task": "inventory",
+    "question": "There are 4 boxes with 7 pencils in each. 3 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 25,
+    "explanation": "There are 4 * 7 = 28 pencils initially. After giving away 3, 28 - 3 = 25 remain.",
+    "explained": "There are 4 * 7 = 28 pencils initially. After giving away 3, 28 - 3 = 25 remain. Answer: 25.",
+    "answer_only": "Answer: 25."
+  },
+  {
+    "id": "inventory-11-10-2",
+    "task": "inventory",
+    "question": "There are 11 boxes with 10 pencils in each. 2 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 108,
+    "explanation": "There are 11 * 10 = 110 pencils initially. After giving away 2, 110 - 2 = 108 remain.",
+    "explained": "There are 11 * 10 = 110 pencils initially. After giving away 2, 110 - 2 = 108 remain. Answer: 108.",
+    "answer_only": "Answer: 108."
+  },
+  {
+    "id": "inventory-12-5-4",
+    "task": "inventory",
+    "question": "There are 12 boxes with 5 pencils in each. 4 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 56,
+    "explanation": "There are 12 * 5 = 60 pencils initially. After giving away 4, 60 - 4 = 56 remain.",
+    "explained": "There are 12 * 5 = 60 pencils initially. After giving away 4, 60 - 4 = 56 remain. Answer: 56.",
+    "answer_only": "Answer: 56."
+  },
+  {
+    "id": "inventory-12-8-6",
+    "task": "inventory",
+    "question": "There are 12 boxes with 8 pencils in each. 6 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 90,
+    "explanation": "There are 12 * 8 = 96 pencils initially. After giving away 6, 96 - 6 = 90 remain.",
+    "explained": "There are 12 * 8 = 96 pencils initially. After giving away 6, 96 - 6 = 90 remain. Answer: 90.",
+    "answer_only": "Answer: 90."
+  },
+  {
+    "id": "inventory-4-6-6",
+    "task": "inventory",
+    "question": "There are 4 boxes with 6 pencils in each. 6 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 18,
+    "explanation": "There are 4 * 6 = 24 pencils initially. After giving away 6, 24 - 6 = 18 remain.",
+    "explained": "There are 4 * 6 = 24 pencils initially. After giving away 6, 24 - 6 = 18 remain. Answer: 18.",
+    "answer_only": "Answer: 18."
+  },
+  {
+    "id": "inventory-6-12-1",
+    "task": "inventory",
+    "question": "There are 6 boxes with 12 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 71,
+    "explanation": "There are 6 * 12 = 72 pencils initially. After giving away 1, 72 - 1 = 71 remain.",
+    "explained": "There are 6 * 12 = 72 pencils initially. After giving away 1, 72 - 1 = 71 remain. Answer: 71.",
+    "answer_only": "Answer: 71."
+  },
+  {
+    "id": "inventory-3-9-9",
+    "task": "inventory",
+    "question": "There are 3 boxes with 9 pencils in each. 9 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 18,
+    "explanation": "There are 3 * 9 = 27 pencils initially. After giving away 9, 27 - 9 = 18 remain.",
+    "explained": "There are 3 * 9 = 27 pencils initially. After giving away 9, 27 - 9 = 18 remain. Answer: 18.",
+    "answer_only": "Answer: 18."
+  },
+  {
+    "id": "inventory-12-8-1",
+    "task": "inventory",
+    "question": "There are 12 boxes with 8 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 95,
+    "explanation": "There are 12 * 8 = 96 pencils initially. After giving away 1, 96 - 1 = 95 remain.",
+    "explained": "There are 12 * 8 = 96 pencils initially. After giving away 1, 96 - 1 = 95 remain. Answer: 95.",
+    "answer_only": "Answer: 95."
+  },
+  {
+    "id": "inventory-8-11-6",
+    "task": "inventory",
+    "question": "There are 8 boxes with 11 pencils in each. 6 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 82,
+    "explanation": "There are 8 * 11 = 88 pencils initially. After giving away 6, 88 - 6 = 82 remain.",
+    "explained": "There are 8 * 11 = 88 pencils initially. After giving away 6, 88 - 6 = 82 remain. Answer: 82.",
+    "answer_only": "Answer: 82."
+  },
+  {
+    "id": "inventory-3-4-2",
+    "task": "inventory",
+    "question": "There are 3 boxes with 4 pencils in each. 2 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 10,
+    "explanation": "There are 3 * 4 = 12 pencils initially. After giving away 2, 12 - 2 = 10 remain.",
+    "explained": "There are 3 * 4 = 12 pencils initially. After giving away 2, 12 - 2 = 10 remain. Answer: 10.",
+    "answer_only": "Answer: 10."
+  },
+  {
+    "id": "inventory-11-4-3",
+    "task": "inventory",
+    "question": "There are 11 boxes with 4 pencils in each. 3 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 41,
+    "explanation": "There are 11 * 4 = 44 pencils initially. After giving away 3, 44 - 3 = 41 remain.",
+    "explained": "There are 11 * 4 = 44 pencils initially. After giving away 3, 44 - 3 = 41 remain. Answer: 41.",
+    "answer_only": "Answer: 41."
+  },
+  {
+    "id": "inventory-8-12-3",
+    "task": "inventory",
+    "question": "There are 8 boxes with 12 pencils in each. 3 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 93,
+    "explanation": "There are 8 * 12 = 96 pencils initially. After giving away 3, 96 - 3 = 93 remain.",
+    "explained": "There are 8 * 12 = 96 pencils initially. After giving away 3, 96 - 3 = 93 remain. Answer: 93.",
+    "answer_only": "Answer: 93."
+  },
+  {
+    "id": "inventory-7-12-8",
+    "task": "inventory",
+    "question": "There are 7 boxes with 12 pencils in each. 8 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 76,
+    "explanation": "There are 7 * 12 = 84 pencils initially. After giving away 8, 84 - 8 = 76 remain.",
+    "explained": "There are 7 * 12 = 84 pencils initially. After giving away 8, 84 - 8 = 76 remain. Answer: 76.",
+    "answer_only": "Answer: 76."
+  },
+  {
+    "id": "inventory-3-11-8",
+    "task": "inventory",
+    "question": "There are 3 boxes with 11 pencils in each. 8 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 25,
+    "explanation": "There are 3 * 11 = 33 pencils initially. After giving away 8, 33 - 8 = 25 remain.",
+    "explained": "There are 3 * 11 = 33 pencils initially. After giving away 8, 33 - 8 = 25 remain. Answer: 25.",
+    "answer_only": "Answer: 25."
+  },
+  {
+    "id": "inventory-9-6-7",
+    "task": "inventory",
+    "question": "There are 9 boxes with 6 pencils in each. 7 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 47,
+    "explanation": "There are 9 * 6 = 54 pencils initially. After giving away 7, 54 - 7 = 47 remain.",
+    "explained": "There are 9 * 6 = 54 pencils initially. After giving away 7, 54 - 7 = 47 remain. Answer: 47.",
+    "answer_only": "Answer: 47."
+  },
+  {
+    "id": "inventory-5-13-1",
+    "task": "inventory",
+    "question": "There are 5 boxes with 13 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 64,
+    "explanation": "There are 5 * 13 = 65 pencils initially. After giving away 1, 65 - 1 = 64 remain.",
+    "explained": "There are 5 * 13 = 65 pencils initially. After giving away 1, 65 - 1 = 64 remain. Answer: 64.",
+    "answer_only": "Answer: 64."
+  },
+  {
+    "id": "inventory-12-7-7",
+    "task": "inventory",
+    "question": "There are 12 boxes with 7 pencils in each. 7 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 77,
+    "explanation": "There are 12 * 7 = 84 pencils initially. After giving away 7, 84 - 7 = 77 remain.",
+    "explained": "There are 12 * 7 = 84 pencils initially. After giving away 7, 84 - 7 = 77 remain. Answer: 77.",
+    "answer_only": "Answer: 77."
+  },
+  {
+    "id": "inventory-11-8-8",
+    "task": "inventory",
+    "question": "There are 11 boxes with 8 pencils in each. 8 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 80,
+    "explanation": "There are 11 * 8 = 88 pencils initially. After giving away 8, 88 - 8 = 80 remain.",
+    "explained": "There are 11 * 8 = 88 pencils initially. After giving away 8, 88 - 8 = 80 remain. Answer: 80.",
+    "answer_only": "Answer: 80."
+  },
+  {
+    "id": "inventory-12-4-9",
+    "task": "inventory",
+    "question": "There are 12 boxes with 4 pencils in each. 9 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 39,
+    "explanation": "There are 12 * 4 = 48 pencils initially. After giving away 9, 48 - 9 = 39 remain.",
+    "explained": "There are 12 * 4 = 48 pencils initially. After giving away 9, 48 - 9 = 39 remain. Answer: 39.",
+    "answer_only": "Answer: 39."
+  },
+  {
+    "id": "inventory-3-12-4",
+    "task": "inventory",
+    "question": "There are 3 boxes with 12 pencils in each. 4 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 32,
+    "explanation": "There are 3 * 12 = 36 pencils initially. After giving away 4, 36 - 4 = 32 remain.",
+    "explained": "There are 3 * 12 = 36 pencils initially. After giving away 4, 36 - 4 = 32 remain. Answer: 32.",
+    "answer_only": "Answer: 32."
+  },
+  {
+    "id": "inventory-10-12-3",
+    "task": "inventory",
+    "question": "There are 10 boxes with 12 pencils in each. 3 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 117,
+    "explanation": "There are 10 * 12 = 120 pencils initially. After giving away 3, 120 - 3 = 117 remain.",
+    "explained": "There are 10 * 12 = 120 pencils initially. After giving away 3, 120 - 3 = 117 remain. Answer: 117.",
+    "answer_only": "Answer: 117."
+  },
+  {
+    "id": "inventory-3-4-1",
+    "task": "inventory",
+    "question": "There are 3 boxes with 4 pencils in each. 1 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 11,
+    "explanation": "There are 3 * 4 = 12 pencils initially. After giving away 1, 12 - 1 = 11 remain.",
+    "explained": "There are 3 * 4 = 12 pencils initially. After giving away 1, 12 - 1 = 11 remain. Answer: 11.",
+    "answer_only": "Answer: 11."
+  },
+  {
+    "id": "inventory-5-10-9",
+    "task": "inventory",
+    "question": "There are 5 boxes with 10 pencils in each. 9 pencils are given away. How many pencils remain? End with 'Answer: <number>'.",
+    "answer": 41,
+    "explanation": "There are 5 * 10 = 50 pencils initially. After giving away 9, 50 - 9 = 41 remain.",
+    "explained": "There are 5 * 10 = 50 pencils initially. After giving away 9, 50 - 9 = 41 remain. Answer: 41.",
+    "answer_only": "Answer: 41."
+  },
+  {
+    "id": "percentage-800-30",
+    "task": "percentage",
+    "question": "A value starts at 800, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 728,
+    "explanation": "The increase gives 1040. The decrease is 30 percent of 1040, which is 312. The final value is 1040 - 312 = 728.",
+    "explained": "The increase gives 1040. The decrease is 30 percent of 1040, which is 312. The final value is 1040 - 312 = 728. Answer: 728.",
+    "answer_only": "Answer: 728."
+  },
+  {
+    "id": "percentage-600-40",
+    "task": "percentage",
+    "question": "A value starts at 600, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 504,
+    "explanation": "The increase gives 840. The decrease is 40 percent of 840, which is 336. The final value is 840 - 336 = 504.",
+    "explained": "The increase gives 840. The decrease is 40 percent of 840, which is 336. The final value is 840 - 336 = 504. Answer: 504.",
+    "answer_only": "Answer: 504."
+  },
+  {
+    "id": "percentage-300-30",
+    "task": "percentage",
+    "question": "A value starts at 300, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 273,
+    "explanation": "The increase gives 390. The decrease is 30 percent of 390, which is 117. The final value is 390 - 117 = 273.",
+    "explained": "The increase gives 390. The decrease is 30 percent of 390, which is 117. The final value is 390 - 117 = 273. Answer: 273.",
+    "answer_only": "Answer: 273."
+  },
+  {
+    "id": "percentage-300-50",
+    "task": "percentage",
+    "question": "A value starts at 300, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 225,
+    "explanation": "The increase gives 450. The decrease is 50 percent of 450, which is 225. The final value is 450 - 225 = 225.",
+    "explained": "The increase gives 450. The decrease is 50 percent of 450, which is 225. The final value is 450 - 225 = 225. Answer: 225.",
+    "answer_only": "Answer: 225."
+  },
+  {
+    "id": "percentage-600-20",
+    "task": "percentage",
+    "question": "A value starts at 600, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 576,
+    "explanation": "The increase gives 720. The decrease is 20 percent of 720, which is 144. The final value is 720 - 144 = 576.",
+    "explained": "The increase gives 720. The decrease is 20 percent of 720, which is 144. The final value is 720 - 144 = 576. Answer: 576.",
+    "answer_only": "Answer: 576."
+  },
+  {
+    "id": "percentage-500-20",
+    "task": "percentage",
+    "question": "A value starts at 500, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 480,
+    "explanation": "The increase gives 600. The decrease is 20 percent of 600, which is 120. The final value is 600 - 120 = 480.",
+    "explained": "The increase gives 600. The decrease is 20 percent of 600, which is 120. The final value is 600 - 120 = 480. Answer: 480.",
+    "answer_only": "Answer: 480."
+  },
+  {
+    "id": "percentage-400-40",
+    "task": "percentage",
+    "question": "A value starts at 400, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 336,
+    "explanation": "The increase gives 560. The decrease is 40 percent of 560, which is 224. The final value is 560 - 224 = 336.",
+    "explained": "The increase gives 560. The decrease is 40 percent of 560, which is 224. The final value is 560 - 224 = 336. Answer: 336.",
+    "answer_only": "Answer: 336."
+  },
+  {
+    "id": "percentage-400-20",
+    "task": "percentage",
+    "question": "A value starts at 400, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 384,
+    "explanation": "The increase gives 480. The decrease is 20 percent of 480, which is 96. The final value is 480 - 96 = 384.",
+    "explained": "The increase gives 480. The decrease is 20 percent of 480, which is 96. The final value is 480 - 96 = 384. Answer: 384.",
+    "answer_only": "Answer: 384."
+  },
+  {
+    "id": "percentage-400-30",
+    "task": "percentage",
+    "question": "A value starts at 400, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 364,
+    "explanation": "The increase gives 520. The decrease is 30 percent of 520, which is 156. The final value is 520 - 156 = 364.",
+    "explained": "The increase gives 520. The decrease is 30 percent of 520, which is 156. The final value is 520 - 156 = 364. Answer: 364.",
+    "answer_only": "Answer: 364."
+  },
+  {
+    "id": "percentage-1000-40",
+    "task": "percentage",
+    "question": "A value starts at 1000, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 840,
+    "explanation": "The increase gives 1400. The decrease is 40 percent of 1400, which is 560. The final value is 1400 - 560 = 840.",
+    "explained": "The increase gives 1400. The decrease is 40 percent of 1400, which is 560. The final value is 1400 - 560 = 840. Answer: 840.",
+    "answer_only": "Answer: 840."
+  },
+  {
+    "id": "percentage-700-50",
+    "task": "percentage",
+    "question": "A value starts at 700, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 525,
+    "explanation": "The increase gives 1050. The decrease is 50 percent of 1050, which is 525. The final value is 1050 - 525 = 525.",
+    "explained": "The increase gives 1050. The decrease is 50 percent of 1050, which is 525. The final value is 1050 - 525 = 525. Answer: 525.",
+    "answer_only": "Answer: 525."
+  },
+  {
+    "id": "percentage-700-30",
+    "task": "percentage",
+    "question": "A value starts at 700, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 637,
+    "explanation": "The increase gives 910. The decrease is 30 percent of 910, which is 273. The final value is 910 - 273 = 637.",
+    "explained": "The increase gives 910. The decrease is 30 percent of 910, which is 273. The final value is 910 - 273 = 637. Answer: 637.",
+    "answer_only": "Answer: 637."
+  },
+  {
+    "id": "percentage-700-40",
+    "task": "percentage",
+    "question": "A value starts at 700, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 588,
+    "explanation": "The increase gives 980. The decrease is 40 percent of 980, which is 392. The final value is 980 - 392 = 588.",
+    "explained": "The increase gives 980. The decrease is 40 percent of 980, which is 392. The final value is 980 - 392 = 588. Answer: 588.",
+    "answer_only": "Answer: 588."
+  },
+  {
+    "id": "percentage-100-20",
+    "task": "percentage",
+    "question": "A value starts at 100, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 96,
+    "explanation": "The increase gives 120. The decrease is 20 percent of 120, which is 24. The final value is 120 - 24 = 96.",
+    "explained": "The increase gives 120. The decrease is 20 percent of 120, which is 24. The final value is 120 - 24 = 96. Answer: 96.",
+    "answer_only": "Answer: 96."
+  },
+  {
+    "id": "percentage-200-30",
+    "task": "percentage",
+    "question": "A value starts at 200, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 182,
+    "explanation": "The increase gives 260. The decrease is 30 percent of 260, which is 78. The final value is 260 - 78 = 182.",
+    "explained": "The increase gives 260. The decrease is 30 percent of 260, which is 78. The final value is 260 - 78 = 182. Answer: 182.",
+    "answer_only": "Answer: 182."
+  },
+  {
+    "id": "percentage-800-10",
+    "task": "percentage",
+    "question": "A value starts at 800, increases by 10 percent, and then decreases by 10 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 792,
+    "explanation": "The increase gives 880. The decrease is 10 percent of 880, which is 88. The final value is 880 - 88 = 792.",
+    "explained": "The increase gives 880. The decrease is 10 percent of 880, which is 88. The final value is 880 - 88 = 792. Answer: 792.",
+    "answer_only": "Answer: 792."
+  },
+  {
+    "id": "percentage-100-10",
+    "task": "percentage",
+    "question": "A value starts at 100, increases by 10 percent, and then decreases by 10 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 99,
+    "explanation": "The increase gives 110. The decrease is 10 percent of 110, which is 11. The final value is 110 - 11 = 99.",
+    "explained": "The increase gives 110. The decrease is 10 percent of 110, which is 11. The final value is 110 - 11 = 99. Answer: 99.",
+    "answer_only": "Answer: 99."
+  },
+  {
+    "id": "percentage-900-50",
+    "task": "percentage",
+    "question": "A value starts at 900, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 675,
+    "explanation": "The increase gives 1350. The decrease is 50 percent of 1350, which is 675. The final value is 1350 - 675 = 675.",
+    "explained": "The increase gives 1350. The decrease is 50 percent of 1350, which is 675. The final value is 1350 - 675 = 675. Answer: 675.",
+    "answer_only": "Answer: 675."
+  },
+  {
+    "id": "percentage-800-40",
+    "task": "percentage",
+    "question": "A value starts at 800, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 672,
+    "explanation": "The increase gives 1120. The decrease is 40 percent of 1120, which is 448. The final value is 1120 - 448 = 672.",
+    "explained": "The increase gives 1120. The decrease is 40 percent of 1120, which is 448. The final value is 1120 - 448 = 672. Answer: 672.",
+    "answer_only": "Answer: 672."
+  },
+  {
+    "id": "percentage-300-20",
+    "task": "percentage",
+    "question": "A value starts at 300, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 288,
+    "explanation": "The increase gives 360. The decrease is 20 percent of 360, which is 72. The final value is 360 - 72 = 288.",
+    "explained": "The increase gives 360. The decrease is 20 percent of 360, which is 72. The final value is 360 - 72 = 288. Answer: 288.",
+    "answer_only": "Answer: 288."
+  },
+  {
+    "id": "percentage-900-20",
+    "task": "percentage",
+    "question": "A value starts at 900, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 864,
+    "explanation": "The increase gives 1080. The decrease is 20 percent of 1080, which is 216. The final value is 1080 - 216 = 864.",
+    "explained": "The increase gives 1080. The decrease is 20 percent of 1080, which is 216. The final value is 1080 - 216 = 864. Answer: 864.",
+    "answer_only": "Answer: 864."
+  },
+  {
+    "id": "percentage-300-10",
+    "task": "percentage",
+    "question": "A value starts at 300, increases by 10 percent, and then decreases by 10 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 297,
+    "explanation": "The increase gives 330. The decrease is 10 percent of 330, which is 33. The final value is 330 - 33 = 297.",
+    "explained": "The increase gives 330. The decrease is 10 percent of 330, which is 33. The final value is 330 - 33 = 297. Answer: 297.",
+    "answer_only": "Answer: 297."
+  },
+  {
+    "id": "percentage-600-50",
+    "task": "percentage",
+    "question": "A value starts at 600, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 450,
+    "explanation": "The increase gives 900. The decrease is 50 percent of 900, which is 450. The final value is 900 - 450 = 450.",
+    "explained": "The increase gives 900. The decrease is 50 percent of 900, which is 450. The final value is 900 - 450 = 450. Answer: 450.",
+    "answer_only": "Answer: 450."
+  },
+  {
+    "id": "percentage-100-50",
+    "task": "percentage",
+    "question": "A value starts at 100, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 75,
+    "explanation": "The increase gives 150. The decrease is 50 percent of 150, which is 75. The final value is 150 - 75 = 75.",
+    "explained": "The increase gives 150. The decrease is 50 percent of 150, which is 75. The final value is 150 - 75 = 75. Answer: 75.",
+    "answer_only": "Answer: 75."
+  },
+  {
+    "id": "percentage-100-40",
+    "task": "percentage",
+    "question": "A value starts at 100, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 84,
+    "explanation": "The increase gives 140. The decrease is 40 percent of 140, which is 56. The final value is 140 - 56 = 84.",
+    "explained": "The increase gives 140. The decrease is 40 percent of 140, which is 56. The final value is 140 - 56 = 84. Answer: 84.",
+    "answer_only": "Answer: 84."
+  },
+  {
+    "id": "percentage-800-20",
+    "task": "percentage",
+    "question": "A value starts at 800, increases by 20 percent, and then decreases by 20 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 768,
+    "explanation": "The increase gives 960. The decrease is 20 percent of 960, which is 192. The final value is 960 - 192 = 768.",
+    "explained": "The increase gives 960. The decrease is 20 percent of 960, which is 192. The final value is 960 - 192 = 768. Answer: 768.",
+    "answer_only": "Answer: 768."
+  },
+  {
+    "id": "percentage-900-30",
+    "task": "percentage",
+    "question": "A value starts at 900, increases by 30 percent, and then decreases by 30 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 819,
+    "explanation": "The increase gives 1170. The decrease is 30 percent of 1170, which is 351. The final value is 1170 - 351 = 819.",
+    "explained": "The increase gives 1170. The decrease is 30 percent of 1170, which is 351. The final value is 1170 - 351 = 819. Answer: 819.",
+    "answer_only": "Answer: 819."
+  },
+  {
+    "id": "percentage-200-50",
+    "task": "percentage",
+    "question": "A value starts at 200, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 150,
+    "explanation": "The increase gives 300. The decrease is 50 percent of 300, which is 150. The final value is 300 - 150 = 150.",
+    "explained": "The increase gives 300. The decrease is 50 percent of 300, which is 150. The final value is 300 - 150 = 150. Answer: 150.",
+    "answer_only": "Answer: 150."
+  },
+  {
+    "id": "percentage-500-40",
+    "task": "percentage",
+    "question": "A value starts at 500, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 420,
+    "explanation": "The increase gives 700. The decrease is 40 percent of 700, which is 280. The final value is 700 - 280 = 420.",
+    "explained": "The increase gives 700. The decrease is 40 percent of 700, which is 280. The final value is 700 - 280 = 420. Answer: 420.",
+    "answer_only": "Answer: 420."
+  },
+  {
+    "id": "percentage-900-40",
+    "task": "percentage",
+    "question": "A value starts at 900, increases by 40 percent, and then decreases by 40 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 756,
+    "explanation": "The increase gives 1260. The decrease is 40 percent of 1260, which is 504. The final value is 1260 - 504 = 756.",
+    "explained": "The increase gives 1260. The decrease is 40 percent of 1260, which is 504. The final value is 1260 - 504 = 756. Answer: 756.",
+    "answer_only": "Answer: 756."
+  },
+  {
+    "id": "percentage-1000-50",
+    "task": "percentage",
+    "question": "A value starts at 1000, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 750,
+    "explanation": "The increase gives 1500. The decrease is 50 percent of 1500, which is 750. The final value is 1500 - 750 = 750.",
+    "explained": "The increase gives 1500. The decrease is 50 percent of 1500, which is 750. The final value is 1500 - 750 = 750. Answer: 750.",
+    "answer_only": "Answer: 750."
+  },
+  {
+    "id": "percentage-500-50",
+    "task": "percentage",
+    "question": "A value starts at 500, increases by 50 percent, and then decreases by 50 percent of its new value. What is the final value? End with 'Answer: <number>'.",
+    "answer": 375,
+    "explanation": "The increase gives 750. The decrease is 50 percent of 750, which is 375. The final value is 750 - 375 = 375.",
+    "explained": "The increase gives 750. The decrease is 50 percent of 750, which is 375. The final value is 750 - 375 = 375. Answer: 375.",
+    "answer_only": "Answer: 375."
+  }
+]

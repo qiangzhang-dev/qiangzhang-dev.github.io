@@ -1,0 +1,50 @@
+{
+  "version": "nate-sft-pilot-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "objective": "Exploratory paired comparison of explained versus answer-only correct targets.",
+  "train_n": 96,
+  "test_in_distribution_n": 36,
+  "probe_n": 12,
+  "training_seeds": [
+    17,
+    29
+  ],
+  "epochs": 3,
+  "batch_size": 4,
+  "learning_rate": 0.0002,
+  "optimizer": "AdamW",
+  "weight_decay": 0.0,
+  "lora": {
+    "r": 8,
+    "alpha": 16,
+    "dropout": 0.0,
+    "modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "loss": "Mean cross entropy over non-masked assistant tokens per batch; prompt/padding masked.",
+  "dtype": "float32 parameters, CPU bfloat16 autocast",
+  "max_train_tokens": 256,
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 128,
+    "batch_size": 4
+  },
+  "threads": 4,
+  "selection": "Final epoch only; no evaluation-based checkpoint selection.",
+  "scoring": "Last Answer: number match, at most one distinct answer value; absent/conflicting values are unparsed. No fallback extraction.",
+  "confounds": [
+    "Same sample/step budget, unequal supervised-token budget.",
+    "Synthetic English tasks, same templates in train and held-out-number test.",
+    "Only two seeds and one small text model.",
+    "12 probe items do not establish general capability retention.",
+    "Explanations repeat task-relevant information/numbers, not just style."
+  ],
+  "data_sha256": {
+    "test.json": "7c0e67b4b302ea382118d78f0205fee75e1b6215d3c2181bee9bbecba740bac2",
+    "train.json": "9b41f719734416c4469695237738d506e9b22de7356837fa7feed26b4400e258"
+  }
+}
