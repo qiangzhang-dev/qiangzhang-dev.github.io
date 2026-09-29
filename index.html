@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Qiang (Nate) Zhang</title>
-<meta name="description" content="Qiang (Nate) Zhang — speech interaction with large language models at iFLYTEK; computer vision, image restoration and fusion.">
+<meta name="description" content="Qiang (Nate) Zhang — speech LLM engineer at iFLYTEK, focusing on supervised fine-tuning, training data and model capability retention.">
 <meta property="og:title" content="Qiang (Nate) Zhang">
-<meta property="og:description" content="Speech interaction with LLMs at iFLYTEK. Research in computer vision, image restoration and fusion.">
+<meta property="og:description" content="Speech LLM engineer at iFLYTEK. Supervised fine-tuning, training data and model capability retention. Previous research in image restoration and fusion.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://qiangzhang-dev.github.io/">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/86115436?v=4">
@@ -59,7 +59,7 @@ summary{padding:6px 0;min-height:36px}
 @media print{body{font-size:11pt;color:#111}main{max-width:none;padding:0}.profile{margin-bottom:24px}.section{margin-bottom:24px}.profile-links,.skip,.footer,.workflow-details,.paper-details{display:none}.project,.history li,.publication{break-inside:avoid}.contact-email{color:#111}a{color:#111}}
 .writing-entry{padding:0 0 20px;margin:0 0 20px;border-bottom:1px solid #edf0f2}.writing-entry:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}.writing-entry .meta{margin-bottom:5px}.writing-entry h3{font-size:17px;line-height:1.6;overflow-wrap:anywhere}.writing-entry p{font-size:15px;color:#626974;line-height:1.7;margin:7px 0 0}.writing-entry .project-links{margin-top:8px}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://qiangzhang-dev.github.io/","name":"Qiang (Nate) Zhang","mainEntity":{"@type":"Person","@id":"https://qiangzhang-dev.github.io/#person","name":"Qiang (Nate) Zhang","alternateName":["Qiang Zhang","Nate Zhang"],"url":"https://qiangzhang-dev.github.io/","image":"https://avatars.githubusercontent.com/u/86115436?v=4","sameAs":["https://github.com/qiangzhang-dev","https://www.zhihu.com/people/cai-hua-si-yi-ru-wo"],"description":"Speech interaction with large language models at iFLYTEK; research in computer vision, image restoration and fusion.","worksFor":{"@type":"Organization","name":"iFLYTEK"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Tianjin University"},{"@type":"CollegeOrUniversity","name":"Anhui University"}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://qiangzhang-dev.github.io/","name":"Qiang (Nate) Zhang","mainEntity":{"@type":"Person","@id":"https://qiangzhang-dev.github.io/#person","name":"Qiang (Nate) Zhang","alternateName":["Qiang Zhang","Nate Zhang"],"url":"https://qiangzhang-dev.github.io/","image":"https://avatars.githubusercontent.com/u/86115436?v=4","sameAs":["https://github.com/qiangzhang-dev","https://www.zhihu.com/people/cai-hua-si-yi-ru-wo"],"description":"Speech LLM engineer at iFLYTEK, focusing on supervised fine-tuning, training data and model capability retention. Previous research in image restoration and fusion.","worksFor":{"@type":"Organization","name":"iFLYTEK"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Tianjin University"},{"@type":"CollegeOrUniversity","name":"Anhui University"}]}}</script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -67,7 +67,8 @@ summary{padding:6px 0;min-height:36px}
 <header class="profile">
 <div class="profile-copy">
 <div class="name-block"><h1>Qiang <span class="english-name">(Nate)</span> Zhang</h1></div>
-<p class="bio">I work on <strong>speech interaction with large language models</strong> at iFLYTEK.</p>
+<p class="bio"><strong>Speech LLM Engineer · Supervised Fine-Tuning</strong></p>
+<p class="bio">I work on <strong>supervised fine-tuning (SFT) for speech interaction</strong> at iFLYTEK. My focus is training data and fine-tuning: making responses more natural while preserving reasoning and general capabilities.</p>
 <p class="bio">Previously, I studied Computer Technology at Tianjin University, where my research focused on <strong>image restoration and fusion</strong>. Before that, I studied Data Science and Big Data Technology at Anhui University.</p>
 <nav class="profile-links" aria-label="Profile links"><a href="mailto:zhangqiang_c@outlook.com" aria-label="Email zhangqiang_c@outlook.com">Email</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/qiangzhang-dev">GitHub ↗</a><span class="separator" aria-hidden="true">/</span><a href="#publications">Research</a><span class="separator" aria-hidden="true">/</span><a href="#writing">Writing</a><span class="separator" aria-hidden="true">/</span><a href="https://www.zhihu.com/people/cai-hua-si-yi-ru-wo">Zhihu ↗</a><span class="separator" aria-hidden="true">/</span><a href="#projects">Projects</a><span class="separator" aria-hidden="true">/</span><a href="#education">Background</a></nav>
 </div>
@@ -97,15 +98,9 @@ summary{padding:6px 0;min-height:36px}
 <p class="section-intro">I write in Chinese about model training, evaluation and my research. Also on <a href="https://www.zhihu.com/people/cai-hua-si-yi-ru-wo">Zhihu ↗</a>.</p>
 <div class="writing-list">
 <article class="writing-entry">
-<div class="meta">ASR experiment · 2026-09-28 · 中文</div>
-<h3 lang="zh-CN"><a href="/notes/whisper-beam/">beam 从 1 改成 5：40 条录音里，哪些结果变了？</a></h3>
-<p lang="zh-CN">固定 Whisper tiny.en 和真实录音：3 条 CER 改善、37 条不变，附原始输出与复现脚本。</p>
-<div class="project-links"><a href="/notes/whisper-beam/">Read the experiment</a><span class="separator" aria-hidden="true">/</span><a href="/notes/whisper-beam/report/">Compare all 40 samples</a><span class="separator" aria-hidden="true">/</span><a href="https://zhuanlan.zhihu.com/p/2087855815839560000">Read on Zhihu ↗</a></div>
-</article>
-<article class="writing-entry">
-<div class="meta">LLM evaluation · Q&amp;A · 中文</div>
-<h3 lang="zh-CN"><a href="https://www.zhihu.com/question/629846408/answer/2086466731988480729">如何评估 LLM？</a></h3>
-<p lang="zh-CN">同样是 60% 的正确率，模型可能错在完全不同的题上。</p>
+<div class="meta">Speech interaction · Article · 中文</div>
+<h3 lang="zh-CN"><a href="https://zhuanlan.zhihu.com/p/2086404159851467671">口语化 SFT 后，模型为什么可能答得更顺，却答得不准？</a></h3>
+<p lang="zh-CN">改写后的答案，真的只改了表达吗？</p>
 </article>
 <article class="writing-entry">
 <div class="meta">Fine-tuning · Q&amp;A · 中文</div>
@@ -113,9 +108,15 @@ summary{padding:6px 0;min-height:36px}
 <p lang="zh-CN">先看具体怎么答错，再检查加载、模板和训练数据。</p>
 </article>
 <article class="writing-entry">
-<div class="meta">Speech interaction · Article · 中文</div>
-<h3 lang="zh-CN"><a href="https://zhuanlan.zhihu.com/p/2086404159851467671">口语化 SFT 后，模型为什么可能答得更顺，却答得不准？</a></h3>
-<p lang="zh-CN">改写后的答案，真的只改了表达吗？</p>
+<div class="meta">LLM evaluation · Q&amp;A · 中文</div>
+<h3 lang="zh-CN"><a href="https://www.zhihu.com/question/629846408/answer/2086466731988480729">如何评估 LLM？</a></h3>
+<p lang="zh-CN">同样是 60% 的正确率，模型可能错在完全不同的题上。</p>
+</article>
+<article class="writing-entry">
+<div class="meta">ASR experiment · 2026-09-28 · 中文</div>
+<h3 lang="zh-CN"><a href="/notes/whisper-beam/">beam 从 1 改成 5：40 条录音里，哪些结果变了？</a></h3>
+<p lang="zh-CN">固定 Whisper tiny.en 和真实录音：3 条 CER 改善、37 条不变，附原始输出与复现脚本。</p>
+<div class="project-links"><a href="/notes/whisper-beam/">Read the experiment</a><span class="separator" aria-hidden="true">/</span><a href="/notes/whisper-beam/report/">Compare all 40 samples</a><span class="separator" aria-hidden="true">/</span><a href="https://zhuanlan.zhihu.com/p/2087855815839560000">Read on Zhihu ↗</a></div>
 </article>
 <article class="writing-entry">
 <div class="meta">Image restoration &amp; fusion · Research note · 中文</div>
@@ -129,7 +130,7 @@ summary{padding:6px 0;min-height:36px}
 <h2 id="projects-title">Personal projects</h2>
 <article class="project">
 <figure class="figure"><a href="https://github.com/qiangzhang-dev/speech-eval-demo/blob/main/docs/architecture.svg" aria-label="View full speech evaluation architecture"><img class="architecture" src="https://raw.githubusercontent.com/qiangzhang-dev/speech-eval-demo/main/docs/architecture.svg" alt="Speech evaluation pipeline from input validation to metrics, diagnostics, and reports" width="1400" height="720"></a><figcaption>Evaluation pipeline · view full diagram</figcaption></figure>
-<div><h3><a href="https://github.com/qiangzhang-dev/speech-eval-demo">Speech Evaluation Demo</a></h3><div class="meta">Python / SQLite / Speech evaluation</div><p>A local tool for comparing reference transcripts with recognition outputs. It calculates character error rate and shows the insertions, deletions and substitutions behind each score.</p><p>Compare two transcript versions on the same references, filter regressions, and inspect character edits. Includes synthetic examples and local CSV import.</p><div class="project-links"><a href="/notes/whisper-beam/">audio experiment</a><span class="separator" aria-hidden="true">/</span><a href="/speech-eval/compare/">version comparison</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo">code</a><span class="separator">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo#readme">documentation</a></div></div>
+<div><h3><a href="https://github.com/qiangzhang-dev/speech-eval-demo">Speech Evaluation Demo</a></h3><div class="meta">Python / SQLite / Speech evaluation</div><p>A small personal project for comparing reference transcripts with recognition outputs. It calculates character error rate and shows the insertions, deletions and substitutions behind each score.</p><p>Compare two transcript versions on the same references, filter regressions, and inspect character edits. Includes synthetic examples and local CSV import.</p><div class="project-links"><a href="/notes/whisper-beam/">audio experiment</a><span class="separator" aria-hidden="true">/</span><a href="/speech-eval/compare/">version comparison</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo">code</a><span class="separator">/</span><a href="https://github.com/qiangzhang-dev/speech-eval-demo#readme">documentation</a></div></div>
 </article>
 <article class="project">
 <figure class="figure"><div class="screens"><img src="https://raw.githubusercontent.com/qiangzhang-dev/subtracker/main/docs/dashboard.png" alt="SubTracker dashboard screenshot" width="76" height="150" loading="lazy"><img src="https://raw.githubusercontent.com/qiangzhang-dev/subtracker/main/docs/list.png" alt="SubTracker subscription list screenshot" width="76" height="150" loading="lazy"></div><figcaption>Dashboard and subscription list</figcaption></figure>
@@ -139,7 +140,7 @@ summary{padding:6px 0;min-height:36px}
 <section class="section" id="education" aria-labelledby="education-title">
 <h2 id="education-title">Background</h2>
 <ul class="history">
-<li><span class="period">2026–present</span><div><h3>iFLYTEK <span lang="zh">· 科大讯飞</span></h3><p>Working on large language models for speech interaction.</p></div></li>
+<li><span class="period">2026–present</span><div><h3>iFLYTEK <span lang="zh">· 科大讯飞</span></h3><p>Supervised fine-tuning for speech interaction, including training data preparation and analysis of model behavior after training.</p><p class="detail">I use the team’s existing evaluation workflows and make targeted fixes to scripts and processes as needed.</p></div></li>
 <li><span class="period">2023–2026</span><div><h3>Tianjin University <span lang="zh">· 天津大学</span></h3><p>Computer Technology · 计算机技术</p><p class="detail">Research area: computer vision (CV).</p></div></li>
 <li><span class="period">2019–2023</span><div><h3>Anhui University <span lang="zh">· 安徽大学</span></h3><p>Data Science and Big Data Technology · 数据科学与大数据技术</p></div></li>
 </ul>
