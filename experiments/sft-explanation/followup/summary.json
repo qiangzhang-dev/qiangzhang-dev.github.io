@@ -1,0 +1,967 @@
+{
+  "cells": {
+    "baseline/original": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 17,
+        "terminal_format": 16,
+        "legacy_correct": 2,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 12,
+        "terminal_format": 10,
+        "legacy_correct": 10,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 0,
+          "n": 12,
+          "values": {
+            "136.0": 2,
+            "170.0": 1,
+            "200.0": 1,
+            "220.0": 1,
+            "155.0": 1,
+            "120.0": 2,
+            "10.0": 1,
+            "176.0": 1,
+            "215.0": 1,
+            "184": 1
+          }
+        },
+        "inventory": {
+          "correct": 9,
+          "n": 12,
+          "values": {
+            "48.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "3.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "7.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 8,
+          "n": 12,
+          "values": {
+            "1800.0": 1,
+            "672.0": 1,
+            "901.0": 1,
+            "693.0": 1,
+            "192.0": 1,
+            "495.0": 1,
+            "910.0": 1,
+            "966.0": 1,
+            "990.0": 1,
+            "496.0": 1,
+            "594.0": 1,
+            "300.0": 1
+          }
+        },
+        "probe": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "baseline/reworded": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 24,
+        "terminal_format": 15,
+        "legacy_correct": 8,
+        "unresolved": 1,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 12,
+        "terminal_format": 10,
+        "legacy_correct": 10,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 4,
+          "n": 12,
+          "values": {
+            "2.79": 1,
+            "0": 1,
+            "0.0": 5,
+            "115.2": 1,
+            "230.0": 1,
+            "210.0": 1,
+            "49.0": 1,
+            "46.0": 1
+          }
+        },
+        "inventory": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 8,
+          "n": 12,
+          "values": {
+            "600.0": 1,
+            "12.75": 1,
+            "891.0": 1,
+            "630.0": 1,
+            "192.0": 1,
+            "495.0": 1,
+            "910.0": 1,
+            "546.0": 1,
+            "None": 1,
+            "396.0": 1,
+            "594.0": 1,
+            "450.0": 1
+          }
+        },
+        "probe": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "explained-seed17/original": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 32,
+        "terminal_format": 36,
+        "legacy_correct": 32,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 11,
+        "terminal_format": 12,
+        "legacy_correct": 11,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "0.0": 4,
+            "20.0": 8
+          }
+        },
+        "inventory": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 9,
+          "n": 12,
+          "values": {
+            "600.0": 1,
+            "752.0": 1,
+            "891.0": 1,
+            "693.0": 1,
+            "192.0": 1,
+            "540.0": 1,
+            "910.0": 1,
+            "546.0": 1,
+            "990.0": 1,
+            "396.0": 1,
+            "630.0": 1,
+            "300.0": 1
+          }
+        },
+        "probe": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "33.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "explained-seed17/reworded": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 17,
+        "terminal_format": 36,
+        "legacy_correct": 17,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 12,
+        "terminal_format": 12,
+        "legacy_correct": 12,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 5,
+          "n": 12,
+          "values": {
+            "165.0": 1,
+            "170.0": 1,
+            "0.0": 5,
+            "10.0": 2,
+            "20.0": 1,
+            "190.0": 1,
+            "205.0": 1
+          }
+        },
+        "inventory": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 0,
+          "n": 12,
+          "values": {
+            "480.0": 2,
+            "568.0": 1,
+            "810.0": 1,
+            "768.0": 1,
+            "180.0": 1,
+            "500.0": 1,
+            "270.0": 1,
+            "486.0": 1,
+            "1000.0": 1,
+            "620.0": 1,
+            "360.0": 1
+          }
+        },
+        "probe": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "answer_only-seed17/original": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 16,
+        "terminal_format": 36,
+        "legacy_correct": 16,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 11,
+        "terminal_format": 12,
+        "legacy_correct": 11,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 5,
+          "n": 12,
+          "values": {
+            "0.0": 12
+          }
+        },
+        "inventory": {
+          "correct": 5,
+          "n": 12,
+          "values": {
+            "48.0": 1,
+            "86.0": 1,
+            "60.0": 1,
+            "37.0": 1,
+            "71.0": 1,
+            "32.0": 1,
+            "83.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "92.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 6,
+          "n": 12,
+          "values": {
+            "600.0": 1,
+            "636.0": 1,
+            "899.0": 1,
+            "693.0": 1,
+            "184.0": 1,
+            "495.0": 1,
+            "972.0": 1,
+            "549.0": 1,
+            "990.0": 1,
+            "396.0": 1,
+            "594.0": 1,
+            "320.0": 1
+          }
+        },
+        "probe": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "10.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "answer_only-seed17/reworded": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 10,
+        "terminal_format": 36,
+        "legacy_correct": 10,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 11,
+        "terminal_format": 12,
+        "legacy_correct": 11,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 4,
+          "n": 12,
+          "values": {
+            "35.0": 1,
+            "17.0": 1,
+            "18.0": 2,
+            "20.0": 3,
+            "0.0": 3,
+            "45.0": 1,
+            "25.0": 1
+          }
+        },
+        "inventory": {
+          "correct": 5,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "90.0": 1,
+            "56.0": 1,
+            "37.0": 1,
+            "27.0": 2,
+            "26.0": 1,
+            "89.0": 1,
+            "28.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "92.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 1,
+          "n": 12,
+          "values": {
+            "640.0": 1,
+            "594.0": 1,
+            "819.0": 1,
+            "639.0": 1,
+            "184.0": 1,
+            "475.0": 1,
+            "972.0": 1,
+            "482.0": 1,
+            "990.0": 1,
+            "368.0": 1,
+            "549.0": 1,
+            "320.0": 1
+          }
+        },
+        "probe": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "2.0": 1
+          }
+        }
+      }
+    },
+    "explained-seed29/original": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 35,
+        "terminal_format": 36,
+        "legacy_correct": 35,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 11,
+        "terminal_format": 11,
+        "legacy_correct": 11,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "0.0": 5,
+            "20.0": 7
+          }
+        },
+        "inventory": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "600.0": 1,
+            "752.0": 1,
+            "891.0": 1,
+            "693.0": 1,
+            "192.0": 1,
+            "495.0": 1,
+            "910.0": 1,
+            "546.0": 1,
+            "990.0": 1,
+            "396.0": 1,
+            "594.0": 1,
+            "300.0": 1
+          }
+        },
+        "probe": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "33": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "explained-seed29/reworded": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 17,
+        "terminal_format": 35,
+        "legacy_correct": 16,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 12,
+        "terminal_format": 12,
+        "legacy_correct": 12,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 5,
+          "n": 12,
+          "values": {
+            "3.0": 1,
+            "30.0": 1,
+            "0.0": 7,
+            "210.0": 1,
+            "20.0": 1,
+            "205.0": 1
+          }
+        },
+        "inventory": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "86.0": 1,
+            "56.0": 1,
+            "31.0": 1,
+            "67.0": 1,
+            "28.0": 1,
+            "91.0": 1,
+            "24.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "84.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 0,
+          "n": 12,
+          "values": {
+            "960.0": 1,
+            "656.0": 1,
+            "9900.0": 1,
+            "768.0": 1,
+            "208.0": 1,
+            "500.0": 1,
+            "940.0": 1,
+            "720.0": 1,
+            "910.0": 1,
+            "472.0": 1,
+            "648.0": 1,
+            "360.0": 1
+          }
+        },
+        "probe": {
+          "correct": 12,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "answer_only-seed29/original": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 17,
+        "terminal_format": 36,
+        "legacy_correct": 17,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 10,
+        "terminal_format": 12,
+        "legacy_correct": 10,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 7,
+          "n": 12,
+          "values": {
+            "20.0": 12
+          }
+        },
+        "inventory": {
+          "correct": 6,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "76.0": 1,
+            "56.0": 1,
+            "37.0": 1,
+            "67.0": 1,
+            "32.0": 1,
+            "83.0": 1,
+            "28.0": 1,
+            "105.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "89.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 4,
+          "n": 12,
+          "values": {
+            "675.0": 1,
+            "634.0": 1,
+            "899.0": 1,
+            "693.0": 1,
+            "184.0": 1,
+            "495.0": 1,
+            "972.0": 1,
+            "549.0": 1,
+            "990.0": 1,
+            "392.0": 1,
+            "594.0": 1,
+            "360.0": 1
+          }
+        },
+        "probe": {
+          "correct": 10,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "10.0": 1,
+            "33.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "20.0": 1
+          }
+        }
+      }
+    },
+    "answer_only-seed29/reworded": {
+      "within_template": {
+        "n": 36,
+        "value_correct": 5,
+        "terminal_format": 36,
+        "legacy_correct": 5,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "probe": {
+        "n": 12,
+        "value_correct": 11,
+        "terminal_format": 12,
+        "legacy_correct": 11,
+        "unresolved": 0,
+        "hit_limit": 0
+      },
+      "tasks": {
+        "discount": {
+          "correct": 1,
+          "n": 12,
+          "values": {
+            "15.0": 2,
+            "170.0": 1,
+            "20.0": 2,
+            "25.0": 3,
+            "45.0": 1,
+            "17.0": 1,
+            "18.0": 1,
+            "10.0": 1
+          }
+        },
+        "inventory": {
+          "correct": 3,
+          "n": 12,
+          "values": {
+            "40.0": 1,
+            "76.0": 1,
+            "54.0": 1,
+            "47.0": 1,
+            "37.0": 1,
+            "26.0": 1,
+            "75.0": 1,
+            "20.0": 1,
+            "87.0": 1,
+            "81.0": 1,
+            "27.0": 1,
+            "90.0": 1
+          }
+        },
+        "percentage": {
+          "correct": 1,
+          "n": 12,
+          "values": {
+            "640.0": 1,
+            "594.0": 1,
+            "816.0": 1,
+            "639.0": 1,
+            "184.0": 1,
+            "475.0": 1,
+            "972.0": 1,
+            "549.0": 2,
+            "990.0": 1,
+            "368.0": 1,
+            "360.0": 1
+          }
+        },
+        "probe": {
+          "correct": 11,
+          "n": 12,
+          "values": {
+            "7.0": 1,
+            "12.0": 1,
+            "3.0": 1,
+            "60.0": 1,
+            "100.0": 1,
+            "43.0": 1,
+            "53.0": 1,
+            "56.0": 1,
+            "9.0": 1,
+            "6.0": 1,
+            "24.0": 1,
+            "2.0": 1
+          }
+        }
+      }
+    }
+  },
+  "paired_changes": [
+    {
+      "tag": "baseline",
+      "improved": [
+        "discount-200-20-220",
+        "discount-170-35-180",
+        "discount-150-30-180",
+        "discount-150-25-180",
+        "inventory-8-6-8",
+        "inventory-4-7-4",
+        "inventory-3-10-3",
+        "percentage-800-50",
+        "percentage-900-10",
+        "percentage-600-30",
+        "percentage-400-10"
+      ],
+      "regressed": [
+        "percentage-700-20",
+        "percentage-700-10",
+        "percentage-1000-10",
+        "percentage-400-50"
+      ]
+    },
+    {
+      "tag": "explained-seed17",
+      "improved": [
+        "discount-200-20-220"
+      ],
+      "regressed": [
+        "discount-170-15-180",
+        "discount-200-30-200",
+        "discount-230-10-220",
+        "discount-230-20-200",
+        "discount-220-10-180",
+        "discount-230-15-220",
+        "discount-230-25-180",
+        "percentage-800-50",
+        "percentage-900-10",
+        "percentage-700-10",
+        "percentage-200-20",
+        "percentage-1000-30",
+        "percentage-600-30",
+        "percentage-1000-10",
+        "percentage-400-10",
+        "percentage-400-50"
+      ]
+    },
+    {
+      "tag": "answer_only-seed17",
+      "improved": [
+        "discount-230-10-220",
+        "discount-220-10-180",
+        "discount-230-15-220",
+        "inventory-8-6-8",
+        "inventory-9-7-7"
+      ],
+      "regressed": [
+        "discount-170-15-180",
+        "discount-200-20-220",
+        "discount-170-35-180",
+        "discount-150-25-180",
+        "inventory-8-11-2",
+        "inventory-4-7-4",
+        "percentage-800-50",
+        "percentage-700-10",
+        "percentage-500-10",
+        "percentage-400-10",
+        "percentage-600-10"
+      ]
+    },
+    {
+      "tag": "explained-seed29",
+      "improved": [],
+      "regressed": [
+        "discount-170-15-180",
+        "discount-200-30-200",
+        "discount-230-10-220",
+        "discount-180-25-180",
+        "discount-230-20-200",
+        "discount-220-10-180",
+        "discount-230-25-180",
+        "percentage-800-50",
+        "percentage-900-10",
+        "percentage-700-10",
+        "percentage-200-20",
+        "percentage-500-10",
+        "percentage-1000-30",
+        "percentage-600-30",
+        "percentage-1000-10",
+        "percentage-400-10",
+        "percentage-600-10",
+        "percentage-400-50"
+      ]
+    },
+    {
+      "tag": "answer_only-seed29",
+      "improved": [],
+      "regressed": [
+        "discount-200-30-200",
+        "discount-180-25-180",
+        "discount-230-20-200",
+        "discount-220-10-180",
+        "discount-230-15-220",
+        "discount-230-25-180",
+        "inventory-9-7-7",
+        "inventory-8-9-5",
+        "inventory-9-12-3",
+        "percentage-700-10",
+        "percentage-500-10",
+        "percentage-600-10"
+      ]
+    }
+  ],
+  "manual_review_count": 6
+}

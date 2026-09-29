@@ -9,11 +9,11 @@ ROOT=Path(__file__).resolve().parent
 TAGS=['baseline','explained-seed17','answer_only-seed17','explained-seed29','answer_only-seed29']
 NUMBER=r'-?\d+(?:,\d{3})*(?:\.\d+)?'
 # Allowed suffix after a final number: units and closing markup, but no new claim.
-TAIL=re.compile(r'^[\s.*$`\\\[\](){}:;!?,]*(?:(?:dollars?|pencils?|pencils? remain|pencils? left|remaining|remain|left)[\s.*$`\\\[\](){}:;!?,]*)?$',re.I)
+TAIL=re.compile(r'^[\s.*$%`\\\[\](){}:;!?,"\']*(?:(?:dollars?|pencils?|pencils? remain|pencils? left|remaining|remain|left|centimeters?|cm|days?|months?|sides?|minutes?|hours?)[\s.*$%`\\\[\](){}:;!?,"\']*)?$',re.I)
 
 def numeric(s):return float(s.replace(',',''))
 def extract(text):
-    explicit=list(re.finditer(r'(?i)\banswer\s*:\s*\$?\s*('+NUMBER+r')',text))
+    explicit=list(re.finditer(r'(?i)(?:\*\*)?\banswer(?:\*\*)?\s*:\s*(?:\*\*)?\s*\$?\s*('+NUMBER+r')',text))
     if explicit:
         vals={numeric(m[1]) for m in explicit};last=explicit[-1]
         if len(vals)==1 and TAIL.fullmatch(text[last.end():]):

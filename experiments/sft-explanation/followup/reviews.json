@@ -1,0 +1,32 @@
+{
+  "baseline/original/discount-230-25-180": {
+    "value": 184,
+    "quote": "So, the final answer is Answer: $230 - $46 = $184.",
+    "reason": "The final claimed value is the right-hand side of the closing equation (184). The legacy parser instead reads the first number after Answer (230)."
+  },
+  "baseline/reworded/discount-200-30-200": {
+    "value": 0,
+    "quote": "Answer: No discount.",
+    "reason": "No discount explicitly claims a zero-dollar discount. This is a numeric-content interpretation of words, not a numeric Answer field."
+  },
+  "baseline/reworded/percentage-700-20": {
+    "value": 12.75,
+    "quote": "\\boxed{\\frac{51}{4}}",
+    "reason": "The last boxed answer is 51/4, which equals 12.75. Earlier inconsistent calculations do not change the final boxed claim. No generated code was executed."
+  },
+  "baseline/reworded/percentage-1000-10": {
+    "value": null,
+    "quote": "\\boxed{0.99Q}",
+    "reason": "Only a symbolic expression is returned; the initial quantity is never substituted into a final numerical answer. This record is unresolved for the final-number metric, not proof that the symbolic formula is wrong."
+  },
+  "baseline/reworded/probe-08": {
+    "value": 9,
+    "quote": "So, each part will have a size of **9**.",
+    "reason": "The closing sentence explicitly gives nine as the size of each part."
+  },
+  "explained-seed29/original/probe-05": {
+    "value": 33,
+    "quote": "Answer: 33.\n17 + 26 = 33.",
+    "reason": "The answer and closing equation consistently claim 33. The final number is wrong; the trailing equation also means this is not a terminal Answer-only field."
+  }
+}
