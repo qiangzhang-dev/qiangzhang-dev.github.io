@@ -23,7 +23,7 @@ extra=''
 post=r/'baseline-512-posthoc.json'
 if post.exists():
  d=json.loads(post.read_text());a=[x for x in d['records'] if x['task']!='probe'];b=[x for x in d['records'] if x['task']=='probe']
- extra=f'<p>发现这个问题后，另做了一次<strong>事后诊断</strong>：仅将原模型的输出上限改为 512，重新生成全部 48 题，不训练、不改提示词和解析器。严格得分变为同模板 {sum(x["correct"] for x in a)}/36、探针 {sum(x["correct"] for x in b)}/12；未解析 {sum(x["parsed"] is None for x in d["records"])}/48，达到长度上限 {sum(x["hit_limit"] for x in d["records"])}/48。<a href="baseline-512-posthoc.json">原始记录</a>与<a href="../check_length.py">脚本</a>单独保存。这只是检查基线对长度限制的敏感性，没有替换主实验，也不是新的五组同条件比较。</p>'
+ extra=f'<p>发现这个问题后，另做了一次<strong>事后诊断</strong>：仅将原模型的输出上限改为 512，重新生成全部 48 题，不训练、不改提示词和解析器。严格得分变为同模板 {sum(x["correct"] for x in a)}/36、探针 {sum(x["correct"] for x in b)}/12；未解析 {sum(x["parsed"] is None for x in d["records"])}/48，达到长度上限 {sum(x["hit_limit"] for x in d["records"])}/48。<a href="baseline-512-posthoc.json">原始记录</a>与<a href="../check_length.py">脚本</a>单独保存。这只是检查基线对长度限制的敏感性，没有替换主实验，也不是新的五组同条件比较。</p><p>放宽长度后，格式仍然影响严格得分。例如 percentage-700-20，原模型最终答出正确的 672，却没有使用 Answer: 格式，所以依然未通过。这再次说明：表里的严格通过数不等同于内容正确数。</p>'
 def response(t,id):return next(x for x in data[t] if x['id']==id)
 caseids=['inventory-8-6-8','discount-200-20-220']
 cases=''
