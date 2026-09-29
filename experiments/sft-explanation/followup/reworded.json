@@ -1,0 +1,290 @@
+[
+  {
+    "id": "discount-170-15-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 170 dollars, and delivery costs 15 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 0
+  },
+  {
+    "id": "discount-200-30-200",
+    "task": "discount",
+    "question": "The item subtotal on an order is 200 dollars, and delivery costs 30 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 200 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-200-20-220",
+    "task": "discount",
+    "question": "The item subtotal on an order is 200 dollars, and delivery costs 20 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 220 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 0
+  },
+  {
+    "id": "discount-230-10-220",
+    "task": "discount",
+    "question": "The item subtotal on an order is 230 dollars, and delivery costs 10 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 220 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-180-25-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 180 dollars, and delivery costs 25 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-170-35-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 170 dollars, and delivery costs 35 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 0
+  },
+  {
+    "id": "discount-150-30-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 150 dollars, and delivery costs 30 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 0
+  },
+  {
+    "id": "discount-150-25-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 150 dollars, and delivery costs 25 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 0
+  },
+  {
+    "id": "discount-230-20-200",
+    "task": "discount",
+    "question": "The item subtotal on an order is 230 dollars, and delivery costs 20 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 200 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-220-10-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 220 dollars, and delivery costs 10 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-230-15-220",
+    "task": "discount",
+    "question": "The item subtotal on an order is 230 dollars, and delivery costs 15 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 220 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "discount-230-25-180",
+    "task": "discount",
+    "question": "The item subtotal on an order is 230 dollars, and delivery costs 25 dollars. A store takes 20 dollars off only if the item subtotal meets or exceeds 180 dollars; delivery charges are excluded from this check. What is the discount amount in dollars? End with 'Answer: <number>'.",
+    "answer": 20
+  },
+  {
+    "id": "inventory-8-6-8",
+    "task": "inventory",
+    "question": "A storage room contains 8 cartons of pencils, with 6 pencils per carton. After 8 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 40
+  },
+  {
+    "id": "inventory-8-11-2",
+    "task": "inventory",
+    "question": "A storage room contains 8 cartons of pencils, with 11 pencils per carton. After 2 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 86
+  },
+  {
+    "id": "inventory-9-7-7",
+    "task": "inventory",
+    "question": "A storage room contains 9 cartons of pencils, with 7 pencils per carton. After 7 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 56
+  },
+  {
+    "id": "inventory-3-12-5",
+    "task": "inventory",
+    "question": "A storage room contains 3 cartons of pencils, with 12 pencils per carton. After 5 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 31
+  },
+  {
+    "id": "inventory-8-9-5",
+    "task": "inventory",
+    "question": "A storage room contains 8 cartons of pencils, with 9 pencils per carton. After 5 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 67
+  },
+  {
+    "id": "inventory-9-4-8",
+    "task": "inventory",
+    "question": "A storage room contains 9 cartons of pencils, with 4 pencils per carton. After 8 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 28
+  },
+  {
+    "id": "inventory-9-11-8",
+    "task": "inventory",
+    "question": "A storage room contains 9 cartons of pencils, with 11 pencils per carton. After 8 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 91
+  },
+  {
+    "id": "inventory-4-7-4",
+    "task": "inventory",
+    "question": "A storage room contains 4 cartons of pencils, with 7 pencils per carton. After 4 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 24
+  },
+  {
+    "id": "inventory-9-12-3",
+    "task": "inventory",
+    "question": "A storage room contains 9 cartons of pencils, with 12 pencils per carton. After 3 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 105
+  },
+  {
+    "id": "inventory-12-7-3",
+    "task": "inventory",
+    "question": "A storage room contains 12 cartons of pencils, with 7 pencils per carton. After 3 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 81
+  },
+  {
+    "id": "inventory-3-10-3",
+    "task": "inventory",
+    "question": "A storage room contains 3 cartons of pencils, with 10 pencils per carton. After 3 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 27
+  },
+  {
+    "id": "inventory-7-13-7",
+    "task": "inventory",
+    "question": "A storage room contains 7 cartons of pencils, with 13 pencils per carton. After 7 pencils are removed from this stock, how many pencils are left? End with 'Answer: <number>'.",
+    "answer": 84
+  },
+  {
+    "id": "percentage-800-50",
+    "task": "percentage",
+    "question": "First a quantity of 800 is raised by 50 percent. It is then lowered by 50 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 600
+  },
+  {
+    "id": "percentage-700-20",
+    "task": "percentage",
+    "question": "First a quantity of 700 is raised by 20 percent. It is then lowered by 20 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 672
+  },
+  {
+    "id": "percentage-900-10",
+    "task": "percentage",
+    "question": "First a quantity of 900 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 891
+  },
+  {
+    "id": "percentage-700-10",
+    "task": "percentage",
+    "question": "First a quantity of 700 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 693
+  },
+  {
+    "id": "percentage-200-20",
+    "task": "percentage",
+    "question": "First a quantity of 200 is raised by 20 percent. It is then lowered by 20 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 192
+  },
+  {
+    "id": "percentage-500-10",
+    "task": "percentage",
+    "question": "First a quantity of 500 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 495
+  },
+  {
+    "id": "percentage-1000-30",
+    "task": "percentage",
+    "question": "First a quantity of 1000 is raised by 30 percent. It is then lowered by 30 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 910
+  },
+  {
+    "id": "percentage-600-30",
+    "task": "percentage",
+    "question": "First a quantity of 600 is raised by 30 percent. It is then lowered by 30 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 546
+  },
+  {
+    "id": "percentage-1000-10",
+    "task": "percentage",
+    "question": "First a quantity of 1000 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 990
+  },
+  {
+    "id": "percentage-400-10",
+    "task": "percentage",
+    "question": "First a quantity of 400 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 396
+  },
+  {
+    "id": "percentage-600-10",
+    "task": "percentage",
+    "question": "First a quantity of 600 is raised by 10 percent. It is then lowered by 10 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 594
+  },
+  {
+    "id": "percentage-400-50",
+    "task": "percentage",
+    "question": "First a quantity of 400 is raised by 50 percent. It is then lowered by 50 percent, with the reduction calculated from the raised quantity. Give the quantity after both changes. End with 'Answer: <number>'.",
+    "answer": 300
+  },
+  {
+    "id": "probe-00",
+    "task": "probe",
+    "question": "How many days make up one week? End with 'Answer: <number>'.",
+    "answer": 7
+  },
+  {
+    "id": "probe-01",
+    "task": "probe",
+    "question": "A complete year contains how many months? End with 'Answer: <number>'.",
+    "answer": 12
+  },
+  {
+    "id": "probe-02",
+    "task": "probe",
+    "question": "What is the number of sides in a triangle? End with 'Answer: <number>'.",
+    "answer": 3
+  },
+  {
+    "id": "probe-03",
+    "task": "probe",
+    "question": "An hour is equal to how many minutes? End with 'Answer: <number>'.",
+    "answer": 60
+  },
+  {
+    "id": "probe-04",
+    "task": "probe",
+    "question": "Express one meter as a number of centimeters. End with 'Answer: <number>'.",
+    "answer": 100
+  },
+  {
+    "id": "probe-05",
+    "task": "probe",
+    "question": "Find the sum of 17 and 26. End with 'Answer: <number>'.",
+    "answer": 43
+  },
+  {
+    "id": "probe-06",
+    "task": "probe",
+    "question": "Subtract 38 from 91. What is the result? End with 'Answer: <number>'.",
+    "answer": 53
+  },
+  {
+    "id": "probe-07",
+    "task": "probe",
+    "question": "Calculate the product of 7 and 8. End with 'Answer: <number>'.",
+    "answer": 56
+  },
+  {
+    "id": "probe-08",
+    "task": "probe",
+    "question": "Divide 81 into 9 equal parts. What is the size of each part? End with 'Answer: <number>'.",
+    "answer": 9
+  },
+  {
+    "id": "probe-09",
+    "task": "probe",
+    "question": "What is the number of sides in a hexagon? End with 'Answer: <number>'.",
+    "answer": 6
+  },
+  {
+    "id": "probe-10",
+    "task": "probe",
+    "question": "One day contains how many hours? End with 'Answer: <number>'.",
+    "answer": 24
+  },
+  {
+    "id": "probe-11",
+    "task": "probe",
+    "question": "Calculate one quarter of 80. End with 'Answer: <number>'.",
+    "answer": 20
+  }
+]

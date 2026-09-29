@@ -1,0 +1,48 @@
+{
+  "version": "sft-reworded-v1",
+  "created_utc": "2026-09-29T08:33:56Z",
+  "purpose": "Post-hoc follow-up: separate final numerical correctness from Answer-field parsing; test one rewording per original item.",
+  "source_commit": "09f085bda8c8877c7cec574e633434f879f5eccd",
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "training": "No additional training. Reuse all four saved final-epoch adapters.",
+  "evaluation": {
+    "max_new_tokens": 512,
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 4,
+    "threads": 4,
+    "system": "You are a helpful assistant.",
+    "dtype": "float32 parameters; CPU bfloat16 autocast"
+  },
+  "reuse": "Original baseline uses the existing baseline-512-posthoc.json; all other cells are newly generated. Four adapters are evaluated on both original and reworded inputs with the same 512-token budget.",
+  "inputs": {
+    "../data/test.json": "7c0e67b4b302ea382118d78f0205fee75e1b6215d3c2181bee9bbecba740bac2",
+    "reworded.json": "9093f00b6fd450f67754f255de605d253c4715596a80254620235ca4fd1d4542",
+    "../results/baseline-512-posthoc.json": "afcc748197a6f8474cd025d328f6800b4e2cace4930562e67247322d6c3424cb"
+  },
+  "adapter_sha256": {
+    "results/explained-seed17-adapter/adapter_config.json": "d98da7f18d440e50e602a57fd190ae2d610718869fc3596b1f7c3b5f5b18839b",
+    "results/explained-seed17-adapter/adapter_model.safetensors": "6b20d9852de04a7024efefae37f45877cd34e632d8caee95f0126bd965a6af31",
+    "results/answer_only-seed17-adapter/adapter_config.json": "d98da7f18d440e50e602a57fd190ae2d610718869fc3596b1f7c3b5f5b18839b",
+    "results/answer_only-seed17-adapter/adapter_model.safetensors": "a43116983d188b84cb6cb233ce0290503be6e3862b43cfec3954124230ff7ee6",
+    "results/explained-seed29-adapter/adapter_config.json": "d98da7f18d440e50e602a57fd190ae2d610718869fc3596b1f7c3b5f5b18839b",
+    "results/explained-seed29-adapter/adapter_model.safetensors": "a2a5cc0cd859685c639a32e96ca8365a31409392fde0bada6dd5eb1dd33ade16",
+    "results/answer_only-seed29-adapter/adapter_config.json": "d98da7f18d440e50e602a57fd190ae2d610718869fc3596b1f7c3b5f5b18839b",
+    "results/answer_only-seed29-adapter/adapter_model.safetensors": "7d250d98a839b9778707636bc6188af2167d7fd380e6678d91e1e350ec0245c3"
+  },
+  "scoring": {
+    "strict_legacy": "Preserve original parser and correct flag unchanged for comparison.",
+    "format": "Report unambiguous explicit Answer-field parsing separately; this is not a full instruction-following metric.",
+    "final_value": "Read the final claimed numerical answer, accepting an Answer field, final boxed number, or explicit closing numerical conclusion. Do not search for the reference value anywhere in the response.",
+    "review": "Outputs not unambiguously resolved by extraction require a saved per-item review with an exact supporting quote. Reviews are not blind to model identity or prior results and do not constitute independent annotation.",
+    "incomplete": "Generation at the 512-token cap is marked incomplete in the final-value metric.",
+    "scope": "Judge final number only, not every intermediate step, explanation quality, spoken style, or general capabilities."
+  },
+  "limits": [
+    "One English rewording per item; no new numbers or task types.",
+    "Test items are paired; seeds and rewordings are not independent new samples.",
+    "Original experiment and results were already known when this follow-up was designed.",
+    "Supervised token budgets remain unequal; this does not isolate an explanation mechanism."
+  ]
+}
