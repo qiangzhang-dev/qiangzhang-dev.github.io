@@ -1,0 +1,407 @@
+{
+  "models": [
+    {
+      "tag": "baseline",
+      "seconds": 105.29783153533936,
+      "within_template": {
+        "n": 36,
+        "correct": 0,
+        "unparsed": 23,
+        "hit_limit": 17,
+        "mean_generated_tokens": 103.5
+      },
+      "probe": {
+        "n": 12,
+        "correct": 10,
+        "unparsed": 2,
+        "hit_limit": 2,
+        "mean_generated_tokens": 35.5
+      },
+      "tasks": {
+        "discount": {
+          "n": 12,
+          "correct": 0
+        },
+        "inventory": {
+          "n": 12,
+          "correct": 0
+        },
+        "percentage": {
+          "n": 12,
+          "correct": 0
+        },
+        "probe": {
+          "n": 12,
+          "correct": 10
+        }
+      }
+    },
+    {
+      "tag": "explained-seed17",
+      "seconds": 85.88354325294495,
+      "within_template": {
+        "n": 36,
+        "correct": 32,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 46.97222222222222
+      },
+      "probe": {
+        "n": 12,
+        "correct": 11,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 14.666666666666666
+      },
+      "tasks": {
+        "discount": {
+          "n": 12,
+          "correct": 11
+        },
+        "inventory": {
+          "n": 12,
+          "correct": 12
+        },
+        "percentage": {
+          "n": 12,
+          "correct": 9
+        },
+        "probe": {
+          "n": 12,
+          "correct": 11
+        }
+      },
+      "training": {
+        "steps": 72,
+        "supervised_tokens": 13974,
+        "seconds": 185.7444965839386,
+        "trainable_parameters": 540672,
+        "adapter_l1_change": 1710.9576642513275
+      },
+      "versus_baseline": {
+        "improved": [
+          "discount-170-15-180",
+          "discount-200-30-200",
+          "discount-230-10-220",
+          "discount-180-25-180",
+          "discount-170-35-180",
+          "discount-150-30-180",
+          "discount-150-25-180",
+          "discount-230-20-200",
+          "discount-220-10-180",
+          "discount-230-15-220",
+          "discount-230-25-180",
+          "inventory-8-6-8",
+          "inventory-8-11-2",
+          "inventory-9-7-7",
+          "inventory-3-12-5",
+          "inventory-8-9-5",
+          "inventory-9-4-8",
+          "inventory-9-11-8",
+          "inventory-4-7-4",
+          "inventory-9-12-3",
+          "inventory-12-7-3",
+          "inventory-3-10-3",
+          "inventory-7-13-7",
+          "percentage-800-50",
+          "percentage-900-10",
+          "percentage-700-10",
+          "percentage-200-20",
+          "percentage-1000-30",
+          "percentage-600-30",
+          "percentage-1000-10",
+          "percentage-400-10",
+          "percentage-400-50",
+          "probe-08",
+          "probe-11"
+        ],
+        "regressed": [
+          "probe-05"
+        ]
+      }
+    },
+    {
+      "tag": "answer_only-seed17",
+      "seconds": 19.335241556167603,
+      "within_template": {
+        "n": 36,
+        "correct": 16,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 7.027777777777778
+      },
+      "probe": {
+        "n": 12,
+        "correct": 11,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 6.666666666666667
+      },
+      "tasks": {
+        "discount": {
+          "n": 12,
+          "correct": 5
+        },
+        "inventory": {
+          "n": 12,
+          "correct": 5
+        },
+        "percentage": {
+          "n": 12,
+          "correct": 6
+        },
+        "probe": {
+          "n": 12,
+          "correct": 11
+        }
+      },
+      "training": {
+        "steps": 72,
+        "supervised_tokens": 2349,
+        "seconds": 128.9539499282837,
+        "trainable_parameters": 540672,
+        "adapter_l1_change": 1103.5804759263992
+      },
+      "versus_baseline": {
+        "improved": [
+          "discount-170-15-180",
+          "discount-200-20-220",
+          "discount-170-35-180",
+          "discount-150-30-180",
+          "discount-150-25-180",
+          "inventory-8-11-2",
+          "inventory-4-7-4",
+          "inventory-9-12-3",
+          "inventory-12-7-3",
+          "inventory-3-10-3",
+          "percentage-800-50",
+          "percentage-700-10",
+          "percentage-500-10",
+          "percentage-1000-10",
+          "percentage-400-10",
+          "percentage-600-10",
+          "probe-08",
+          "probe-11"
+        ],
+        "regressed": [
+          "probe-04"
+        ]
+      }
+    },
+    {
+      "tag": "explained-seed29",
+      "seconds": 89.09294891357422,
+      "within_template": {
+        "n": 36,
+        "correct": 35,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 47.47222222222222
+      },
+      "probe": {
+        "n": 12,
+        "correct": 11,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 16.5
+      },
+      "tasks": {
+        "discount": {
+          "n": 12,
+          "correct": 12
+        },
+        "inventory": {
+          "n": 12,
+          "correct": 12
+        },
+        "percentage": {
+          "n": 12,
+          "correct": 11
+        },
+        "probe": {
+          "n": 12,
+          "correct": 11
+        }
+      },
+      "training": {
+        "steps": 72,
+        "supervised_tokens": 13974,
+        "seconds": 203.2175588607788,
+        "trainable_parameters": 540672,
+        "adapter_l1_change": 1696.6415810585022
+      },
+      "versus_baseline": {
+        "improved": [
+          "discount-170-15-180",
+          "discount-200-30-200",
+          "discount-200-20-220",
+          "discount-230-10-220",
+          "discount-180-25-180",
+          "discount-170-35-180",
+          "discount-150-30-180",
+          "discount-150-25-180",
+          "discount-230-20-200",
+          "discount-220-10-180",
+          "discount-230-15-220",
+          "discount-230-25-180",
+          "inventory-8-6-8",
+          "inventory-8-11-2",
+          "inventory-9-7-7",
+          "inventory-3-12-5",
+          "inventory-8-9-5",
+          "inventory-9-4-8",
+          "inventory-9-11-8",
+          "inventory-4-7-4",
+          "inventory-9-12-3",
+          "inventory-12-7-3",
+          "inventory-3-10-3",
+          "inventory-7-13-7",
+          "percentage-800-50",
+          "percentage-900-10",
+          "percentage-700-10",
+          "percentage-200-20",
+          "percentage-500-10",
+          "percentage-1000-30",
+          "percentage-600-30",
+          "percentage-1000-10",
+          "percentage-400-10",
+          "percentage-600-10",
+          "percentage-400-50",
+          "probe-08",
+          "probe-11"
+        ],
+        "regressed": [
+          "probe-05"
+        ]
+      }
+    },
+    {
+      "tag": "answer_only-seed29",
+      "seconds": 20.039268016815186,
+      "within_template": {
+        "n": 36,
+        "correct": 17,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 7.361111111111111
+      },
+      "probe": {
+        "n": 12,
+        "correct": 10,
+        "unparsed": 0,
+        "hit_limit": 0,
+        "mean_generated_tokens": 6.666666666666667
+      },
+      "tasks": {
+        "discount": {
+          "n": 12,
+          "correct": 7
+        },
+        "inventory": {
+          "n": 12,
+          "correct": 6
+        },
+        "percentage": {
+          "n": 12,
+          "correct": 4
+        },
+        "probe": {
+          "n": 12,
+          "correct": 10
+        }
+      },
+      "training": {
+        "steps": 72,
+        "supervised_tokens": 2349,
+        "seconds": 138.94542026519775,
+        "trainable_parameters": 540672,
+        "adapter_l1_change": 1074.1055912971497
+      },
+      "versus_baseline": {
+        "improved": [
+          "discount-200-30-200",
+          "discount-230-10-220",
+          "discount-180-25-180",
+          "discount-230-20-200",
+          "discount-220-10-180",
+          "discount-230-15-220",
+          "discount-230-25-180",
+          "inventory-8-6-8",
+          "inventory-9-7-7",
+          "inventory-8-9-5",
+          "inventory-9-12-3",
+          "inventory-12-7-3",
+          "inventory-3-10-3",
+          "percentage-700-10",
+          "percentage-500-10",
+          "percentage-1000-10",
+          "percentage-600-10",
+          "probe-08",
+          "probe-11"
+        ],
+        "regressed": [
+          "probe-04",
+          "probe-05"
+        ]
+      }
+    }
+  ],
+  "paired_disagreements": [
+    {
+      "seed": 17,
+      "explained_only_correct": [
+        "discount-200-30-200",
+        "discount-230-10-220",
+        "discount-180-25-180",
+        "discount-230-20-200",
+        "discount-220-10-180",
+        "discount-230-15-220",
+        "discount-230-25-180",
+        "inventory-8-6-8",
+        "inventory-9-7-7",
+        "inventory-3-12-5",
+        "inventory-8-9-5",
+        "inventory-9-4-8",
+        "inventory-9-11-8",
+        "inventory-7-13-7",
+        "percentage-900-10",
+        "percentage-200-20",
+        "percentage-1000-30",
+        "percentage-600-30",
+        "percentage-400-50",
+        "probe-04"
+      ],
+      "answer_only_correct": [
+        "discount-200-20-220",
+        "percentage-500-10",
+        "percentage-600-10",
+        "probe-05"
+      ]
+    },
+    {
+      "seed": 29,
+      "explained_only_correct": [
+        "discount-170-15-180",
+        "discount-200-20-220",
+        "discount-170-35-180",
+        "discount-150-30-180",
+        "discount-150-25-180",
+        "inventory-8-11-2",
+        "inventory-3-12-5",
+        "inventory-9-4-8",
+        "inventory-9-11-8",
+        "inventory-4-7-4",
+        "inventory-7-13-7",
+        "percentage-800-50",
+        "percentage-900-10",
+        "percentage-200-20",
+        "percentage-1000-30",
+        "percentage-600-30",
+        "percentage-400-10",
+        "percentage-400-50",
+        "probe-04"
+      ],
+      "answer_only_correct": []
+    }
+  ]
+}

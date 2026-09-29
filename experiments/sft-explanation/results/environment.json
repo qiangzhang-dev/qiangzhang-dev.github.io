@@ -1,0 +1,8 @@
+{
+  "torch": "2.6.0+cpu",
+  "transformers": "4.51.3",
+  "peft": "0.15.2",
+  "threads": 4,
+  "parameters": 494032768,
+  "started_utc": "2026-09-29T07:16:32Z"
+}
