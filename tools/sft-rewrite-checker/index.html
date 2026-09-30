@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>SFT 改写检查 · Nate Zhang</title>
+  <meta name="description" content="在浏览器中对照 SFT 改写前后的答案，定位数字、条件、确定性与格式的词面变化，导出人工审核记录。">
+  <link rel="canonical" href="https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到工具</a>
+  <header class="site-header"><a class="brand" href="/">Nate / Tools</a><nav aria-label="工具导航"><a href="/notes/sft-rewrite-review/">检查方法</a><a href="https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/tools/sft-rewrite-checker">源代码 ↗</a></nav></header>
+  <main id="main">
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow">Training data · Answer rewriting</p>
+      <h1 id="title">SFT 改写检查</h1>
+      <p class="lead">把问题、原答案和改写答案放在一起，先找出值得复核的变化。</p>
+      <p class="local-note"><span class="dot" aria-hidden="true"></span>文件只在当前浏览器内读取。刷新前请导出审核记录。</p>
+    </section>
+
+    <section class="input-panel" aria-labelledby="data-title">
+      <div class="section-heading"><div><h2 id="data-title">导入一批答案</h2><p class="hint">JSONL 每行一条，也支持 JSON 数组。最多 5000 条 / 5 MiB。</p></div><button id="examples" type="button" class="secondary">载入构造示例</button></div>
+      <label class="field-label" for="data">输入数据</label>
+      <textarea id="data" rows="7" spellcheck="false" placeholder='{"id":"case-1","input":"完整训练输入","original":"原答案","rewrite":"改写答案"}'></textarea>
+      <div class="input-actions"><div class="file-control"><label for="file">或选择文件</label><input id="file" type="file" accept=".json,.jsonl,.ndjson,application/json,text/plain"></div><button id="analyze" type="button" class="primary">检查差异</button></div>
+      <p id="message" class="message" role="status" aria-live="polite">还没有载入数据。可先用 8 条构造示例体验。</p>
+      <details class="format-help"><summary>字段格式与检查范围</summary>
+        <p><code>input</code>、<code>original</code>、<code>rewrite</code> 必须是非空文本。input 请包含实际送入训练的完整输入，包括需要的 system、历史轮次和材料。id 可选；不提供时按行生成。普通数据最多 5 MiB；导出的审核记录因包含提示和备注，重新导入时允许最多 64 MiB。</p>
+        <p>可选的 <code>must_keep</code> 是需要核对的短语数组，例如 <code>["运费不计入门槛"]</code>。它做字面匹配，同义改写也可能被提示。</p>
+        <p>规则检查数字及邻接单位、条件词、不确定性词、澄清请求词、长度和常见 Markdown 标记。它不会判断语义等价、事实正确性或训练效果，也不调用模型。</p>
+        <p>中文数词、跨句条件、单位换算和隐含信息可能漏检或误报。无提示也需要人工检查。原答案可能有错，不能直接把它当作标准答案。</p>
+        <p>示例是人为构造的教学案例，包括等价单位换算和未触发规则的改写，便于观察规则的边界。<a href="sample.jsonl" download="sft-rewrite-examples.jsonl">下载示例 JSONL</a> · <a href="/notes/sft-rewrite-review/">阅读检查方法</a></p>
+      </details>
+    </section>
+
+    <section id="review" class="review-section" aria-labelledby="review-title" hidden>
+      <div class="section-heading"><div><h2 id="review-title">逐条复核</h2><p class="hint">提示是检查线索；审核结论由你填写。</p></div><button id="export" type="button" class="secondary">导出审核记录</button></div>
+      <div id="stats" class="stats" aria-live="polite"></div>
+      <div class="filters"><div><label for="search">查找样本</label><input id="search" type="search" placeholder="ID 或文本关键词"></div><div><label for="rule">差异线索</label><select id="rule"><option value="all">全部样本</option><option value="flagged">有提示的样本</option><option value="none">未命中规则</option></select></div><div><label for="decision">审核结论</label><select id="decision"><option value="all">全部结论</option><option value="pending">待复核</option><option value="keep">保留</option><option value="revise">返修</option><option value="hold">搁置</option></select></div></div>
+      <div class="results-heading"><p id="result-count" class="hint"></p><div class="pagination"><button id="previous" class="quiet" type="button">上一页</button><span id="page-count"></span><button id="next" class="quiet" type="button">下一页</button></div></div>
+      <div id="cards"></div>
+      <p id="empty" class="empty" hidden>没有符合当前筛选条件的样本。试着修改关键词或筛选条件。</p>
+    </section>
+    <noscript><p class="message error">这个工具需要 JavaScript。也可以下载源代码，在本地浏览器中运行。</p></noscript>
+  </main>
+  <footer><span>Nate Zhang · Personal tool · v0.1.0</span><a href="/">返回个人网站</a></footer>
+</body>
+</html>

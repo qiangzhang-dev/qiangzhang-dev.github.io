@@ -1,0 +1,8 @@
+{"id":"shipping-condition","input":"某项虚构活动规定：周末，单笔商品实付满 200 元减 20 元，运费不计入门槛。周六商品实付 190 元，运费 15 元，能参加吗？请说明原因。","original":"不能。运费不计入门槛，商品实付只有 190 元，没满 200 元。","rewrite":"不能，你这单没满 200 元。"}
+{"id":"explanation-shortened","input":"一个数先增加 20%，再减少 20%，会回到原值吗？请用 100 举例解释。","original":"不会。100 增加 20% 是 120，再减少的是 120 的 20%，也就是 24，最后是 96。","rewrite":"不会，最后是 96。"}
+{"id":"certainty-changed","input":"程序连接超时，能确定是服务端挂了吗？","original":"不能确定。服务不可用、网络不通或超时设置过短，都可能导致连接超时，需要结合日志排查。","rewrite":"就是服务端挂了，重启一下就行。"}
+{"id":"clarification-lost","input":"帮我比较 A 和 B 哪个更快。","original":"你指的是哪两个产品？想比较启动速度，还是任务完成时间？","rewrite":"B 更快，处理一张图片只要 2 秒，比 A 快一倍。"}
+{"id":"unit-conversion","input":"这段路长 1000 米，请用米或公里表示，只需一句话。","original":"1000 米。","rewrite":"1 公里。"}
+{"id":"percentage-points","input":"虚构指标从 40% 降到 20%，下降了多少个百分点？","original":"下降了 20 个百分点。","rewrite":"下降了 20%。"}
+{"id":"markdown-added","input":"口头告诉我今天先做什么、再做什么，不用列表。","original":"先检查数据，再跑训练。","rewrite":"- 先检查数据。\n- 再跑训练。"}
+{"id":"same-facts-new-words","input":"货架原有 8 件商品，卖出 3 件，还剩几件？只需一句话。","original":"还剩 5 件。","rewrite":"现在还剩 5 件。"}
