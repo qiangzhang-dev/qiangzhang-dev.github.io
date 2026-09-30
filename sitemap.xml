@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://qiangzhang-dev.github.io/</loc></url>
   <url><loc>https://qiangzhang-dev.github.io/air-fusion/</loc></url>
+  <url><loc>https://qiangzhang-dev.github.io/speech-eval/</loc></url>
+  <url><loc>https://qiangzhang-dev.github.io/speech-eval/compare/</loc></url>
   <url><loc>https://qiangzhang-dev.github.io/notes/air-fusion/</loc><lastmod>2026-09-22</lastmod></url>
 <url><loc>https://qiangzhang-dev.github.io/notes/whisper-beam/</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://qiangzhang-dev.github.io/notes/whisper-beam/report/</loc></url>
 <url><loc>https://qiangzhang-dev.github.io/notes/sft-rewrite-review/</loc><lastmod>2026-09-30</lastmod></url>
 <url><loc>https://qiangzhang-dev.github.io/experiments/sft-explanation/results/</loc><lastmod>2026-09-29</lastmod></url>
 <url><loc>https://qiangzhang-dev.github.io/experiments/sft-explanation/followup/</loc><lastmod>2026-09-29</lastmod></url>
