@@ -1,5 +1,5 @@
-import { analyze, parseRecords, makeReport, DECISIONS, RULES, MAX_REPORT_BYTES, textLength } from './core.js';
-import { EXAMPLES } from './examples.js';
+import { analyze, parseRecords, makeReport, DECISIONS, RULES, MAX_REPORT_BYTES, textLength } from './core.js?v=0.1.1';
+import { EXAMPLES } from './examples.js?v=0.1.1';
 
 const $ = id => document.getElementById(id);
 const PAGE_SIZE = 25;
