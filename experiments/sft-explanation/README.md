@@ -2,6 +2,17 @@
 
 This experiment asks what happens when correct training answers keep their explanation or retain only their final number. It uses public model weights and programmatically constructed English problems. It is not a speech-model experiment or evidence about an employer's models.
 
+## Published results
+
+- [First training comparison](https://qiangzhang-dev.github.io/experiments/sft-explanation/results/) — the original 128-token protocol, all raw responses, and a separate baseline-only length diagnostic.
+- [Question-rewording and scoring follow-up](https://qiangzhang-dev.github.io/experiments/sft-explanation/followup/) — no additional training; all five models compared with a 512-token budget, final-value accuracy reported separately from terminal format.
+- [Follow-up code and reproduction steps](followup/README.md).
+- [Chinese walkthrough on Zhihu](https://zhuanlan.zhihu.com/p/2088312597007409375).
+
+On the 36 original test questions, the explained-target models returned correct final values in 32 and 35 cases. With one alternate wording per question, both returned 17 correct values; the original Instruct model returned 24 on that rewording set. **The first round's high within-template scores did not fully carry over to these alternate wordings.**
+
+The same 512-token baseline outputs score 2/36 under the legacy Answer-based rule and 17/36 by final claimed numeric value. Neither score alone identifies a training mechanism. Supervised-token budgets also differ: 13,974 versus 2,349.
+
 ## Design
 
 - Model: [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), pinned to `7ae557604adf67be50417f59c2c2f167def9a775` (Apache 2.0).
