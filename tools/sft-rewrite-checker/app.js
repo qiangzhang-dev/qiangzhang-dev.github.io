@@ -5,6 +5,18 @@ const $ = id => document.getElementById(id);
 const PAGE_SIZE = 25;
 let records = [];
 let page = 1;
+let exportUrl = null;
+
+function clearExport() {
+  if (exportUrl) {
+    URL.revokeObjectURL(exportUrl);
+    exportUrl = null;
+    message('审核记录已修改，请重新导出。');
+  }
+  $('export-panel').hidden = true;
+  $('export-json').value = '';
+  $('download-records').removeAttribute('href');
+}
 
 function element(tag, text, className) {
   const node = document.createElement(tag);
@@ -70,6 +82,7 @@ function renderCard(record, index) {
   decision.value = record.review.decision;
   decision.addEventListener('change', () => {
     record.review.decision = decision.value;
+    clearExport();
     status.textContent = DECISIONS[decision.value];
     renderStats();
     if ($('decision').value !== 'all') renderResults();
@@ -84,7 +97,7 @@ function renderCard(record, index) {
   note.rows = 2; note.maxLength = 10000;
   note.placeholder = '记录具体改动、输入依据和处理理由';
   note.value = record.review.note;
-  note.addEventListener('input', () => { record.review.note = note.value; });
+  note.addEventListener('input', () => { record.review.note = note.value; clearExport(); });
   noteBox.append(noteLabel, note);
   review.append(decisionBox, noteBox); body.append(review);
   card.append(header, body);
@@ -116,6 +129,7 @@ function renderResults() {
 function runAnalysis() {
   try {
     const parsed = parseRecords($('data').value);
+    clearExport();
     records = parsed.map(record => ({ ...record, findings: analyze(record) }));
     page = 1;
     $('search').value = ''; $('rule').value = 'all'; $('decision').value = 'all';
@@ -150,11 +164,13 @@ $('previous').addEventListener('click', () => { page--; renderResults(); $('revi
 $('next').addEventListener('click', () => { page++; renderResults(); $('review').scrollIntoView({ block: 'start' }); });
 $('export').addEventListener('click', () => {
   const report = makeReport(records);
-  const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2) + '\n'], { type: 'application/json;charset=utf-8' }));
-  const link = element('a');
-  link.href = url;
-  link.download = 'sft-rewrite-review-' + new Date().toISOString().slice(0, 10) + '.json';
-  document.body.append(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 30000);
-  message('已导出全部 ' + records.length + ' 条记录（不受当前筛选限制）。重新导入此 JSON 可以继续审核。');
+  const json = JSON.stringify(report, null, 2) + '\n';
+  if (exportUrl) URL.revokeObjectURL(exportUrl);
+  exportUrl = URL.createObjectURL(new Blob([json], { type: 'application/json;charset=utf-8' }));
+  $('download-records').href = exportUrl;
+  $('download-records').download = 'sft-rewrite-review-' + new Date().toISOString().slice(0, 10) + '.json';
+  $('export-json').value = json;
+  $('export-panel').hidden = false;
+  message('已生成全部 ' + records.length + ' 条审核记录（不受当前筛选限制）。可下载或展开复制 JSON，重新导入可以继续审核。');
 });
+$('select-json').addEventListener('click', () => { $('export-json').focus(); $('export-json').select(); });

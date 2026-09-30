@@ -44,7 +44,7 @@ Inspect the complete input and both answers. The original is a comparison point,
 
 ## Human review and export
 
-Set each record to `pending`, `keep`, `revise` or `hold` and add an optional note. Search and filters do not change the underlying data. The JSON export always contains all records, the current findings and the human decisions. Reimport the export to continue; findings are recalculated rather than trusted from the file. Text is displayed as text, never interpreted as HTML.
+Set each record to `pending`, `keep`, `revise` or `hold` and add an optional note. Search and filters do not change the underlying data. Export generates a download link and a read-only JSON field for copying. It always contains all records, the current findings and the human decisions. Editing a decision or note invalidates the previous export so a new one can be generated. Reimport the export to continue; findings are recalculated rather than trusted from the file. Text is displayed as text, never interpreted as HTML.
 
 Records are kept in page memory only. There is no backend, model call, analytics, localStorage or IndexedDB. Refreshing or closing the page discards the current review unless it was exported. A page-level Content Security Policy disallows script network connections. Loading the page and its static assets still makes ordinary requests to GitHub Pages.
 

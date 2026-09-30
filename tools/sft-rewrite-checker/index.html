@@ -38,6 +38,10 @@
 
     <section id="review" class="review-section" aria-labelledby="review-title" hidden>
       <div class="section-heading"><div><h2 id="review-title">逐条复核</h2><p class="hint">提示是检查线索；审核结论由你填写。</p></div><button id="export" type="button" class="secondary">导出审核记录</button></div>
+      <div id="export-panel" class="export-panel" hidden>
+        <p><strong>审核记录已生成</strong> · <a id="download-records" download>下载 JSON 文件</a></p>
+        <details><summary>或复制审核 JSON</summary><label for="export-json" class="field-label">全部审核记录 JSON</label><textarea id="export-json" rows="6" readonly spellcheck="false"></textarea><button id="select-json" type="button" class="quiet">选中全部 JSON</button><p class="hint">复制后保存为 .json 文件，或粘贴回输入数据继续审核。</p></details>
+      </div>
       <div id="stats" class="stats" aria-live="polite"></div>
       <div class="filters"><div><label for="search">查找样本</label><input id="search" type="search" placeholder="ID 或文本关键词"></div><div><label for="rule">差异线索</label><select id="rule"><option value="all">全部样本</option><option value="flagged">有提示的样本</option><option value="none">未命中规则</option></select></div><div><label for="decision">审核结论</label><select id="decision"><option value="all">全部结论</option><option value="pending">待复核</option><option value="keep">保留</option><option value="revise">返修</option><option value="hold">搁置</option></select></div></div>
       <div class="results-heading"><p id="result-count" class="hint"></p><div class="pagination"><button id="previous" class="quiet" type="button">上一页</button><span id="page-count"></span><button id="next" class="quiet" type="button">下一页</button></div></div>
