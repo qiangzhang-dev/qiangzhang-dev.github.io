@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SFT 改写检查：从示例到审核记录 · Nate Zhang</title>
+<meta name="description" content="SFT 改写检查工具的使用说明：运行构造示例、导入 JSONL、复核差异、保存并恢复人工审核记录。">
+<link rel="canonical" href="https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/guide/">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#30343b;font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:820px;padding:42px 28px 70px;margin:auto}nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;margin-bottom:40px}a{color:#1766aa;text-underline-offset:4px}a:focus-visible{outline:2px solid #1766aa;outline-offset:4px}h1{text-wrap:balance;font-size:clamp(28px,5vw,36px);line-height:1.45;letter-spacing:-.025em;color:#181b20;margin:0 0 18px}h1+p{color:#717983;font-size:14px;margin-bottom:32px}h2{font-size:23px;line-height:1.5;margin:36px 0 14px;color:#242a32}p{margin:16px 0}strong{font-weight:600}table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:15px;margin:24px 0}th,td{padding:12px 14px;border-bottom:1px solid #e4e8ed;text-align:left;min-width:95px;vertical-align:top}thead{background:#f5f7fa}code{font-size:.88em;background:#f3f5f7;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#f3f5f7}pre code{padding:0}ul{padding-left:24px}li{margin:12px 0}footer{border-top:1px solid #e4e8ed;padding-top:20px;margin-top:38px;color:#717983;font-size:13px}@media(max-width:600px){main{padding:26px 18px 50px}body{font-size:16px}nav{margin-bottom:30px}th,td{padding:10px 8px}table{font-size:14px}h2{font-size:21px}}@media print{nav,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}table{display:table}}
+
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin:23px 0}.open-tool{display:inline-block;padding:9px 16px;background:#1766aa;color:#fff;border-radius:5px;font-size:15px;text-decoration:none}.open-tool:hover{background:#14558e;color:#fff}.steps{margin:28px 0;padding:12px 0;border-top:1px solid #e4e8ed;border-bottom:1px solid #e4e8ed;gap:18px}.case{padding:16px 20px;border-left:3px solid #d3e1ee;background:#f7f9fc;margin:22px 0}.case p{margin:6px 0;font-size:15px}ol{padding-left:24px}ol li{margin:10px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}caption{text-align:left;color:#717983;font-size:13px;margin-bottom:8px}.note{font-size:14px;color:#626974}
+</style>
+</head>
+<body>
+<main>
+<nav aria-label="使用说明导航"><a href="/">Nate / 个人网站</a><a href="/tools/sft-rewrite-checker/">打开工具</a><a href="/notes/sft-rewrite-review/">检查方法</a><a href="https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/tools/sft-rewrite-checker">源代码 ↗</a></nav>
+<article>
+<h1>SFT 改写检查：从示例到审核记录</h1>
+<p>2026-09-30 · 使用说明 · Qiang (Nate) Zhang</p>
+<p>一批答案改得更口语化之后，可以先找出数字、条件和表达上的明显变化，再逐条确认是否符合任务要求。这个小工具把完整输入、原答案和改写答案放在一起，留下处理决定和备注。</p>
+<p>页面中的提示来自词面规则。它不会判断答案是否正确，也不会自动批准样本进入训练。</p>
+<div class="actions"><a class="open-tool" href="/tools/sft-rewrite-checker/">打开 SFT 改写检查</a><a href="/tools/sft-rewrite-checker/sample.jsonl" download="sft-rewrite-examples.jsonl">下载 8 条示例</a></div>
+<nav class="steps" aria-label="使用步骤"><a href="#examples">1. 先跑示例</a><a href="#input">2. 导入数据</a><a href="#review">3. 逐条复核</a><a href="#save">4. 保存与恢复</a></nav>
+
+<section id="examples" aria-labelledby="examples-title">
+<h2 id="examples-title">先跑一遍示例</h2>
+<ol><li>打开工具，点击“载入构造示例”。</li><li>向下进入“逐条复核”，先看完整输入，再对照两个答案。</li><li>点击“查看提示的依据”，读出触发规则的具体文本。</li><li>填写处理决定和理由。不要只根据有无提示作决定。</li></ol>
+<p>这组示例有 8 条，其中 7 条触发了至少一项规则。这个数字描述的是规则命中情况，不能解释成“7 条错误、1 条正确”。它们是人为构造的教学案例，不是模型实测输出。</p>
+<div class="case"><p><strong>完整输入：</strong>周末，商品实付满 200 元减 20 元，运费不计入门槛。周六商品实付 190 元、运费 15 元，能参加吗？请说明原因。</p><p><strong>原答案：</strong>不能。运费不计入门槛，商品实付只有 190 元，没满 200 元。</p><p><strong>改写答案：</strong>不能，你这单没满 200 元。</p></div>
+<p>这条会提示数字变化、条件线索减少和答案缩短。结合输入可以确认：结论仍然正确，但题目要求说明原因，而改写没有说明为什么运费不算。一个具体的返修备注可以是：“补回运费不计入门槛的依据。”</p>
+<table>
+<caption>三个示例的复核方式</caption>
+<thead><tr><th scope="col">示例</th><th scope="col">工具提示</th><th scope="col">人工还要确认什么</th></tr></thead>
+<tbody>
+<tr><td>运费条件被省略</td><td>数字、条件线索和长度变化</td><td>输入要求解释原因，是否需要补回排除运费的依据。</td></tr>
+<tr><td>“不能确定”改成“就是服务端挂了”</td><td>不确定性线索减少、答案缩短</td><td>输入是否提供了足以确定故障原因的证据。</td></tr>
+<tr><td>“1000 米”改成“1 公里”</td><td>数字 / 单位变化</td><td>两者等价；这条输入允许米或公里，核验后可以保留。</td></tr>
+</tbody></table>
+<p>最后一例说明了为什么提示不能代替判断。规则看到了不同的数字和单位，单位换算是否成立，仍要由人核验。</p>
+</section>
+
+<section id="input" aria-labelledby="input-title">
+<h2 id="input-title">导入自己的对照数据</h2>
+<p>工具接受 JSONL、JSON 数组，以及它自己导出的审核 JSON。每条记录需要三个非空文本字段：</p>
+<table><thead><tr><th scope="col">字段</th><th scope="col">填写内容</th></tr></thead><tbody>
+<tr><td><code>input</code></td><td>实际送入训练的完整输入，包括需要的 system、历史轮次和材料。</td></tr>
+<tr><td><code>original</code></td><td>改写前的答案。</td></tr>
+<tr><td><code>rewrite</code></td><td>改写后的答案。</td></tr>
+<tr><td><code>id</code>（可选）</td><td>稳定的样本标识。未提供时按行生成；同批次不能重复。</td></tr>
+<tr><td><code>must_keep</code>（可选）</td><td>需要核对的短语数组，例如 <code>["运费不计入门槛"]</code>。同义改写也可能触发。</td></tr>
+</tbody></table>
+<p>下面是一条 JSONL 记录。JSONL 的每条记录放在一行，页面中因宽度换行不影响其原始格式：</p>
+<pre><code>{"id":"shipping-condition","input":"某项虚构活动规定：周末，单笔商品实付满 200 元减 20 元，运费不计入门槛。周六商品实付 190 元，运费 15 元，能参加吗？请说明原因。","original":"不能。运费不计入门槛，商品实付只有 190 元，没满 200 元。","rewrite":"不能，你这单没满 200 元。"}</code></pre>
+<p>选择文件后，点击“检查差异”；也可以直接粘贴数据。普通数据单批最多 5000 条、5 MiB。字段不完整或 ID 重复时，页面会指出位置，并保留已有审核结果。</p>
+<p>若你的数据使用其他字段名，需要先整理成上面的结构。工具不自动转换聊天模板，也不检查 token 监督范围。</p>
+</section>
+
+<section id="review" aria-labelledby="review-title">
+<h2 id="review-title">把审核理由留在样本旁边</h2>
+<p>可以按 ID 或文本搜索，也可以筛选某类提示、未命中规则的样本或尚未复核的记录。提示里的摘录用于定位变化；作决定时仍需看完整输入和两个答案。</p>
+<table><thead><tr><th scope="col">结论</th><th scope="col">如何使用</th></tr></thead><tbody>
+<tr><td>待复核</td><td>尚未作出处理决定。</td></tr>
+<tr><td>保留</td><td>结合任务核验后，决定保留这版改写。</td></tr>
+<tr><td>返修</td><td>明确需要修改，备注写清哪句话、哪个条件或步骤要修。</td></tr>
+<tr><td>搁置</td><td>材料或任务要求还不足，暂缓决定。</td></tr>
+</tbody></table>
+<p>备注尽量写成可执行的要求。例如“保留第二次以 120 为基数的计算解释”，比“不够完整”更方便后续处理。原答案如果有错，也要单独指出，不能默认要求改写照搬原答案。</p>
+</section>
+
+<section id="save" aria-labelledby="save-title">
+<h2 id="save-title">保存记录，下次继续审核</h2>
+<ol>
+<li>点击“导出审核记录”。导出包含整批样本、提示、人工结论和备注，不受当前筛选条件限制。</li>
+<li>选择“下载 JSON 文件”，或展开“或复制审核 JSON”，点击“选中全部 JSON”后复制完整内容。</li>
+<li>恢复时选择保存的审核 JSON，或者把完整内容粘贴回“输入数据”，再点击“检查差异”。人工结论和备注会保留，规则提示重新计算。</li>
+<li>如果继续修改结论或备注，重新导出一次。页面会收起旧的导出入口，提醒保存最新状态。</li>
+</ol>
+<p><strong>刷新或关闭页面前，请先保存。</strong>当前审核不会自动保存。工具在浏览器内处理导入数据，不上传样本、不调用模型。</p>
+<p class="note">审核记录包含提示和备注，因此恢复时允许最多 64 MiB。选择复制方式时，请保留完整 JSON，避免只复制当前屏幕可见的几行。</p>
+</section>
+
+<section id="limits" aria-labelledby="limits-title">
+<h2 id="limits-title">还需要人工检查的内容</h2>
+<p>同义改写、中文数词、单位换算、隐含条件和新增事实，可能漏检或误报。短答案是否合适，要看任务有没有要求解释。没有提示，也不代表样本已经合格。</p>
+<p>这些规则目前没有在独立人工标注集上测量准确率或召回率。工具适合定位词面变化、整理人工审核记录；要判断一批改写是否改善训练效果，仍需实际训练和独立评测。</p>
+<p>更完整的检查思路见<a href="/notes/sft-rewrite-review/">《训练答案改写后，怎么检查它还适不适合做 SFT？》</a>。</p>
+</section>
+<div class="actions"><a class="open-tool" href="/tools/sft-rewrite-checker/">回到工具试一遍</a><a href="https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/tools/sft-rewrite-checker">查看代码与示例 ↗</a></div>
+</article>
+<footer>说明对应工具 v0.1.1 · <a href="/">返回个人网站</a></footer>
+</main>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 A small browser tool for reviewing rewritten SFT answers alongside their complete input and original answer.
 
-[Open the tool](https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/) · [Review method and examples](https://qiangzhang-dev.github.io/notes/sft-rewrite-review/)
+[Open the tool](https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/) · [Quick start in Chinese](https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/guide/) · [Review method and examples](https://qiangzhang-dev.github.io/notes/sft-rewrite-review/)
 
 The tool flags lexical differences and leaves the decision to the reviewer. It does not score answer quality, judge semantic equivalence, or infer a training effect.
 
