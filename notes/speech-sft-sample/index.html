@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>从文本问答到语音 SFT：一条训练样本要保留什么？ · Nate Zhang</title><meta name="description" content="用一条构造问题说明语音 SFT 样本的条件保留、音频核对、监督目标和数据划分。"><link rel="canonical" href="https://qiangzhang-dev.github.io/notes/speech-sft-sample/"><style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#30343b;font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:820px;padding:42px 28px 70px;margin:auto}nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;margin-bottom:40px}a{color:#1766aa;text-underline-offset:4px}a:focus-visible{outline:2px solid #1766aa;outline-offset:4px}h1{text-wrap:balance;font-size:clamp(28px,5vw,36px);line-height:1.45;letter-spacing:-.025em;color:#181b20;margin:0 0 18px}h1+p{color:#717983;font-size:14px;margin-bottom:32px}h2{font-size:23px;line-height:1.5;margin:36px 0 14px;color:#242a32}p{margin:16px 0}strong{font-weight:600}table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:15px;margin:24px 0}th,td{padding:12px 14px;border-bottom:1px solid #e4e8ed;text-align:left;min-width:95px;vertical-align:top}thead{background:#f5f7fa}code{font-size:.88em;background:#f3f5f7;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#f3f5f7}pre code{padding:0}ul{padding-left:24px}li{margin:12px 0}footer{border-top:1px solid #e4e8ed;padding-top:20px;margin-top:38px;color:#717983;font-size:13px}@media(max-width:600px){main{padding:26px 18px 50px}body{font-size:16px}nav{margin-bottom:30px}th,td{padding:10px 8px}table{font-size:14px}h2{font-size:21px}}@media print{nav,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}table{display:table}}
+</style></head><body><main><nav aria-label="文章导航"><a href="/">Nate / 个人网站</a><a href="/#writing">全部文章</a><a href="/notes/sft-rewrite-review/">训练答案改写检查</a><a href="/experiments/sft-explanation/results/">小规模 SFT 对照</a></nav><article>
+<h1>从文本问答到语音 SFT：一条训练样本要保留什么？</h1>
+<p class="article-meta">2026-09-30 · Qiang (Nate) Zhang</p>
+<p><a href="https://qiangzhang-dev.github.io/notes/sft-rewrite-review/">训练答案改写检查</a>讨论了改写后条件和答案是否仍然对应。把问题换成语音输入，还要多核对一层：模型实际听到的内容，是否足以支持监督答案。</p>
+<p>公开研究已有类似的数据构造方式。Freeze-Omni 在语音输入训练的最后阶段，用多说话人 TTS 合成多轮问答中的问题，以文本答案为监督。<a href="https://arxiv.org/html/2411.00774v3#S2.SS2.SSS2">论文第 2.2.2 节</a></p>
+<p>本文只讨论“语音提问、文字回答”的样本准备。下面是构造案例，没有生成音频或运行训练；检查步骤是工程建议。</p>
+<h2>把四份材料分开</h2>
+<p>这条样本可以先写成四项：</p>
+<ul>
+<li>原题：一段录音正常播放需要 3 分钟，以 1.5× 播放，需要几分钟？只回答分钟数。</li>
+<li>朗读稿：一段录音正常播放要三分钟，用一点五倍速播放，需要几分钟？只回答分钟数。</li>
+<li>音频：按朗读稿生成并保存的实际文件。本例尚无文件。</li>
+<li>问答目标：<code>2</code></li>
+</ul>
+<p>原题到朗读稿的变化可以逐项核对：三分钟、一点五倍速、计算播放时间、只输出分钟数。这些条件成立时，答案来自 3 ÷ 1.5 = 2。</p>
+<p>同样的语音内容也能用于转写任务，但目标文本应是音频里的话。把问答目标设为 <code>2</code>，就要确认训练要求确实是回答问题。审核记录应注明任务；是否增加模型可见的任务标记，要按具体训练设计决定。</p>
+<h2>朗读稿核对后 还要核对音频</h2>
+<p>“一点五倍速”和“一倍半速”在这里可以表达同一条件。重点是含义保留，不必逐字一致。</p>
+<p>如果实际音频漏掉了倍速条件，原答案 <code>2</code> 就失去了依据，应回听定位，再决定重生成、修复或剔除。数字、单位、否定词和限制条件值得单独检查。</p>
+<p>可以用 ASR 回转辅助筛查：转写不同，可能只是数字写法不同；转写一致，也不能证明实际音频没有问题。送给 TTS 的朗读稿，应与人工确认过的转写分开保存，避免把计划读出的内容当成已经听到的内容。</p>
+<p>为便于复查，建议保留原题、朗读稿、实际音频及其哈希、生成来源与版本、时长和听检结论。重新合成后，音频版本和检查记录也应更新。</p>
+<h2>用最终输入检查监督依据</h2>
+<p>若目标是仅凭语音题目作答，原题和转写可以留在审核记录里，不应未经说明就一起喂给模型。否则模型获得的就是音频加文本输入，不能据此判断它是否仅凭语音作答。</p>
+<p><a href="https://huggingface.co/docs/transformers/en/model_doc/qwen2_audio#voice-chat-inference">Transformers 的 Qwen2-Audio 文档</a>分别展示了纯音频消息、音频加文字消息，以及按 processor 要求加载音频的方式。它是推理接口示例，不能替代实际训练数据的检查。</p>
+<p>应抽查经过数据加载、模板处理和截断后的样本：音频是否对应当前轮，历史轮次是否有序，采样率是否匹配所选 processor，答案及结束位置是否完整，loss mask 是否对应约定的监督范围。看到源文件中有正确答案，还不足以确认训练时监督了什么。</p>
+<h2>同一道题的变体一起划分</h2>
+<p>给原题保存 <code>source_question_id</code>，给音色、语速和改写版本保存各自的 <code>variant_id</code>。</p>
+<p>若要考察未见问题上的表现，应按题目来源分组划分训练、验证和测试集，再生成或分配音频变体。把同一道题的不同音色随机分到训练和测试中，测到的更接近已见问题上的声音条件变化。这个对照可以做，但结论要写清楚。</p>
+<p>来源分组仍需配合近重复和模板检查。合成语音、真人朗读、自然对话也应分别标记；真人朗读不能直接代表自由对话。</p>
+<h2>检查通过之后</h2>
+<p>完成这些检查，只能说明样本在约定任务下更可追溯。要讨论训练收益，还需要固定模型、模板、答案、数据划分和选择规则，用独立的语音问题检查回答质量。原始题数、音频变体数、总时长和参与监督的 token 数应分别记录。</p>
+<p>此前的<a href="https://qiangzhang-dev.github.io/experiments/sft-explanation/results/">小规模 SFT 对照</a>是文本实验，不能据此推断语音输入的效果。ASR 错误可以帮助定位问题，CER/WER 也不能直接代替问答正确率。</p>
+<p>整理完一条样本，至少应能说明：模型实际听到了什么，被要求做什么，以及为什么这个答案仍然成立。</p>
+</article><footer>Qiang (Nate) Zhang · <a href="/">返回个人网站</a></footer></main></body></html>
