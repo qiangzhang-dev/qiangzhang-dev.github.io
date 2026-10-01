@@ -4,6 +4,7 @@
 import argparse
 from collections import defaultdict
 from dataclasses import dataclass, field
+from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -23,6 +24,8 @@ EXCLUDED_HTML = {
 EXTERNAL_ROUTES = {"/subtracker": "qiangzhang-dev/subtracker"}
 IGNORED_DIRS = {"node_modules", "__pycache__", "venv"}
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+ATOM_NS = "http://www.w3.org/2005/Atom"
+FEED_URL = SITE_ORIGIN + "/feed.xml"
 # Published order: https://www.ijcai.org/proceedings/2026/105
 # Scoped to this paper only; future publications have their own author lists.
 AIR_FUSION_AUTHORS = ("Bing Cao", "Qiang Zhang", "Xingxin Xu", "Pengfei Zhu")
@@ -50,6 +53,8 @@ class Page(HTMLParser):
         self.links = []
         self.titles = []
         self.canonicals = []
+        self.feed_links = []
+        self.body_links = []
         self.meta = defaultdict(list)
         self.json_ld = []
         self.text = []
@@ -80,8 +85,12 @@ class Page(HTMLParser):
                 self._title = []
             if tag == "link" and "canonical" in attrs.get("rel", "").lower().split():
                 self.canonicals.append(attrs.get("href", ""))
+            if tag == "link" and "alternate" in attrs.get("rel", "").lower().split() and attrs.get("type") == "application/rss+xml":
+                self.feed_links.append(attrs.get("href", ""))
             if tag == "meta" and attrs.get("name"):
                 self.meta[attrs["name"].lower()].append(attrs.get("content", ""))
+        elif tag == "a":
+            self.body_links.append(attrs.get("href", ""))
         if tag == "script" and attrs.get("type", "").lower() == "application/ld+json":
             self._json = []
 
@@ -185,6 +194,77 @@ class Result:
     page_count: int = 0
     local_links: int = 0
     external_route_links: int = 0
+    feed_items: int = 0
+
+
+def check_feed(root, pages, result):
+    """Validate this site's curated RSS notes feed, not every sitemap page."""
+    homepage = pages.get(root / "index.html")
+    if homepage:
+        base = urljoin(homepage.url, homepage.base) if homepage.base is not None else homepage.url
+        if [urljoin(base, href) for href in homepage.feed_links] != [FEED_URL]:
+            result.errors.append("index.html: expected one head RSS autodiscovery link to feed.xml")
+        if FEED_URL not in [urljoin(base, href) for href in homepage.body_links]:
+            result.errors.append("index.html: missing body link to feed.xml")
+    try:
+        rss = ET.parse(root / "feed.xml").getroot()
+        if rss.tag != "rss" or rss.get("version") != "2.0" or len(rss.findall("channel")) != 1:
+            raise ValueError("expected RSS 2.0 with exactly one channel")
+        channel = rss.find("channel")
+    except (OSError, ET.ParseError, ValueError) as error:
+        result.errors.append(f"feed.xml: {error}")
+        return
+
+    def text_field(node, tag, label):
+        fields = node.findall(tag)
+        if len(fields) != 1 or len(fields[0]) or not clean(fields[0].text or ""):
+            result.errors.append(f"feed.xml: {label} requires one nonempty plain-text {tag}")
+            return ""
+        return clean(fields[0].text)
+
+    for tag in ("title", "description", "language"):
+        text_field(channel, tag, "channel")
+    if text_field(channel, "link", "channel") != SITE_ORIGIN + "/#writing":
+        result.errors.append("feed.xml: channel link must point to the homepage writing section")
+    self_links = [node for node in channel.findall(f"{{{ATOM_NS}}}link") if node.get("rel") == "self"]
+    if len(self_links) != 1 or self_links[0].get("href") != FEED_URL or self_links[0].get("type") != "application/rss+xml":
+        result.errors.append("feed.xml: expected one RSS atom:self link to the canonical feed URL")
+    items = channel.findall("item")
+    result.feed_items = len(items)
+    if not items:
+        result.errors.append("feed.xml: no article items")
+    links, guids = set(), set()
+    for number, item in enumerate(items, 1):
+        label = f"item {number}"
+        for tag in ("title", "description"):
+            text_field(item, tag, label)
+        link = text_field(item, "link", label)
+        guid = text_field(item, "guid", label)
+        if link in links or guid in guids:
+            result.errors.append(f"feed.xml: {label} duplicates an article link or GUID")
+        links.add(link)
+        guids.add(guid)
+        guid_nodes = item.findall("guid")
+        if guid != link or len(guid_nodes) != 1 or guid_nodes[0].get("isPermaLink") != "true":
+            result.errors.append(f"feed.xml: {label} GUID must be its canonical permalink")
+        target, _, separate = local_target(root, link)
+        page = pages.get(target)
+        # Only top-level authored notes: nested reports, utilities and project pages
+        # are supporting resources, not additional entries in this feed.
+        if (separate or page is None or page.noindex or link != page.url
+                or len(page.relative.parts) != 3 or page.relative.parts[0] != "notes"
+                or page.relative.name != "index.html" or page.canonicals != [link]):
+            result.errors.append(f"feed.xml: {label} link must be an indexable authored note's canonical URL: {link!r}")
+        dates = item.findall("pubDate")
+        if len(dates) > 1:
+            result.errors.append(f"feed.xml: {label} has duplicate pubDate elements")
+        for date in dates:
+            try:
+                parsed = parsedate_to_datetime(date.text or "")
+                if parsed.tzinfo is None or len(date):
+                    raise ValueError("missing time zone or not plain text")
+            except (TypeError, ValueError, OverflowError):
+                result.errors.append(f"feed.xml: {label} pubDate must be a valid RSS date with time zone")
 
 
 def check_site(root):
@@ -253,6 +333,7 @@ def check_site(root):
             result.errors.append(f"sitemap.xml: URL is not an indexable local page: {extra}")
     except (OSError, ET.ParseError, ValueError) as error:
         result.errors.append(f"sitemap.xml: {error}")
+    check_feed(root, pages, result)
     return result
 
 
@@ -272,7 +353,7 @@ def main(argv=None):
         print(f"FAIL: {len(result.errors)} issue(s)", file=sys.stderr)
         return 1
     print(f"PASS: {result.page_count} pages, {result.local_links} local references; "
-          f"{result.external_route_links} separate-repository route(s) skipped. No network requests.")
+          f"{result.feed_items} RSS items; {result.external_route_links} separate-repository route(s) skipped. No network requests.")
     return 0
 
 

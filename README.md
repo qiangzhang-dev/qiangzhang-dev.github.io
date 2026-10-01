@@ -32,6 +32,14 @@ A responsive, dependency-free website hosted on GitHub Pages.
 
 The site uses system fonts and no analytics, external scripts, or cookies.
 
+### Follow the technical notes
+
+Add [the RSS feed](https://qiangzhang-dev.github.io/feed.xml) to a feed reader; no signup is needed. The homepage also exposes the feed through standard RSS autodiscovery.
+
+`feed.xml` contains short summaries and canonical links for the five authored notes under `/notes/`. Supporting reports, tools, project pages and Zhihu-only posts are not separate feed entries. When publishing a new note, add one item near the top with its exact title, a faithful summary, and its permanent canonical URL as both `link` and `guid`. Keep that GUID unchanged for later edits. Escape XML text (`&amp;`, `&lt;`, `&gt;`) and run the checks below.
+
+The initial order follows the articles' visible bylines: pass@k (2026-10-01), speech SFT (2026-09-30), rewrite review (2026-09-29), Whisper beam (2026-09-28), and AIR-Fusion (2026-09-22). These sources provide calendar dates, not verified publication times or time zones, so optional RSS `pubDate` fields are omitted. Do not invent timestamps; use a verified publication timestamp if one is available for a future item.
+
 ### Offline integrity checks
 
 Run from the repository root with Python 3.9 or newer; no packages or network access are required:
@@ -46,6 +54,7 @@ The checker exits nonzero and prints the source path when a check fails. It chec
 - Local HTML `href`, `src` and `poster` targets, including relative links, same-host absolute links, downloads and HTML fragment IDs (or legacy named anchors).
 - One nonempty document title and one self-canonical per public page, with no duplicate titles or canonical URLs.
 - Sitemap coverage of standalone `.html` pages, including articles and generated reports, and stale or duplicate sitemap entries. Pages marked `noindex` are not included in the sitemap; their local links are still checked.
+- RSS XML and channel metadata, nonempty item titles and summaries, unique canonical article links/GUIDs, optional date syntax, and homepage discovery links. Feed items must target indexable top-level notes; feed coverage is curated, not forced to match every sitemap page.
 - The published AIR-Fusion author order in Highwire citation tags, JSON-LD and visible BibTeX, using the [official IJCAI record](https://www.ijcai.org/proceedings/2026/105). This check is scoped to `air-fusion/index.html`, not future publications.
 
 Page discovery excludes hidden directories, Python/Node dependency and cache directories, and the preserved `experiments/sft-explanation/followup/zhihu-article.html` publication fragment documented in its adjacent README. New standalone pages are discovered automatically. Add deliberate source-fragment exclusions with a reason in `EXCLUDED_HTML`; do not exclude a public article to silence a missing sitemap entry.

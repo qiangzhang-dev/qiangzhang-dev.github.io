@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qiang (Nate) Zhang · 技术笔记</title>
+    <link>https://qiangzhang-dev.github.io/#writing</link>
+    <description>关于 SFT 数据、模型评测和图像恢复与融合的中文技术笔记。</description>
+    <language>zh-CN</language>
+    <atom:link href="https://qiangzhang-dev.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pass@10 比 pass@1 低，先检查评测口径</title>
+      <link>https://qiangzhang-dev.github.io/notes/pass-at-k-sampling/</link>
+      <guid isPermaLink="true">https://qiangzhang-dev.github.io/notes/pass-at-k-sampling/</guid>
+      <description>用构造结果区分至少一次正确、平均正确率和十次全对，核对 pass@k 估计器，再检查采样设置、多轮评测与训练前后的对照。例子不是模型实测结果。</description>
+    </item>
+    <item>
+      <title>从文本问答到语音 SFT：一条训练样本要保留什么？</title>
+      <link>https://qiangzhang-dev.github.io/notes/speech-sft-sample/</link>
+      <guid isPermaLink="true">https://qiangzhang-dev.github.io/notes/speech-sft-sample/</guid>
+      <description>从一条构造问题出发，核对朗读稿的条件、实际音频、监督答案和同题变体的数据划分。文章讨论样本准备，没有生成音频或运行训练。</description>
+    </item>
+    <item>
+      <title>训练答案改写后，怎么检查它还适不适合做 SFT？</title>
+      <link>https://qiangzhang-dev.github.io/notes/sft-rewrite-review/</link>
+      <guid isPermaLink="true">https://qiangzhang-dev.github.io/notes/sft-rewrite-review/</guid>
+      <description>用构造案例检查答案改写中的条件遗漏、解释缺失、确定性变化和输入信息缺口，并记录审核依据。这些检查建议不能代替独立的训练效果评测。</description>
+    </item>
+    <item>
+      <title>beam 从 1 改成 5：40 条录音里，哪些结果变了？</title>
+      <link>https://qiangzhang-dev.github.io/notes/whisper-beam/</link>
+      <guid isPermaLink="true">https://qiangzhang-dev.github.io/notes/whisper-beam/</guid>
+      <description>固定 Whisper tiny.en，在 40 条 LibriSpeech 录音上比较 beam size 1 和 5：3 条 CER 改善、37 条不变。结合逐句输出讨论字符指标的盲点和这次小样本实验的局限。</description>
+    </item>
+    <item>
+      <title>AIR-Fusion：用扩散模型同时做图像恢复与融合</title>
+      <link>https://qiangzhang-dev.github.io/notes/air-fusion/</link>
+      <guid isPermaLink="true">https://qiangzhang-dev.github.io/notes/air-fusion/</guid>
+      <description>结合论文原图，解释冻结恢复主干、跨模态桥接适配器 CMBA 和轨迹约束校正器 TCR 如何参与图像恢复与红外–可见光融合，并讨论文本引导、实验指标与局限。</description>
+    </item>
+  </channel>
+</rss>

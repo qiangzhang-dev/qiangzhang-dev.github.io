@@ -15,6 +15,9 @@ from scripts.check_site import AIR_FUSION_AUTHORS, SITE_ORIGIN, check_site, main
 def html(path, body="", head="", title=None, canonical=True):
     title = title or "Page " + path
     link = f'<link rel="canonical" href="{page_url(Path(path))}">' if canonical else ""
+    if path == "index.html":
+        head += f'<link rel="alternate" type="application/rss+xml" href="{SITE_ORIGIN}/feed.xml">'
+        body += '<a href="/feed.xml">RSS</a>'
     return (f'<!doctype html><html><head><title>{title}</title>{link}{head}'
             f'</head><body>{body}</body></html>')
 
@@ -27,6 +30,14 @@ class SiteIntegrityTests(unittest.TestCase):
         self.write("index.html", html("index.html", '<a href="notes/example/#section">Note</a>'))
         self.write("notes/example/index.html", html("notes/example/index.html", '<h2 id="section">Section</h2>'))
         self.sitemap("/", "/notes/example/")
+        self.write("feed.xml", f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>Technical notes</title><link>{SITE_ORIGIN}/#writing</link>
+<description>中文技术笔记</description><language>zh-CN</language>
+<atom:link href="{SITE_ORIGIN}/feed.xml" rel="self" type="application/rss+xml" />
+<item><title>Example</title><link>{SITE_ORIGIN}/notes/example/</link>
+<guid isPermaLink="true">{SITE_ORIGIN}/notes/example/</guid>
+<description>A useful summary.</description></item></channel></rss>''')
 
     def write(self, relative, content):
         path = self.root / relative
