@@ -1,0 +1,245 @@
+{
+  "audit_date": "2026-10-01",
+  "source_commit": "8ff7032e8deceffad2d368ea844160cdfe315608",
+  "method": "Post-hoc grouping by (item subtotal, discount threshold). Shipping is explicitly irrelevant to the reference decision. Recount saved original-question outputs only; no new inference or training.",
+  "split": {
+    "train_rows": 32,
+    "train_distinct_conditions": 20,
+    "test_rows": 12,
+    "test_distinct_conditions": 9,
+    "test_rows_with_training_condition": 8,
+    "test_distinct_conditions_seen_in_training": 6,
+    "test_rows_with_unseen_condition": 4,
+    "test_distinct_conditions_unseen_in_training": 3
+  },
+  "original_question_results": {
+    "explained-seed17": {
+      "raw_source": "followup/results/explained-seed17-original.json",
+      "strata": {
+        "seen_condition": {
+          "n": 8,
+          "correct": 8
+        },
+        "unseen_condition": {
+          "n": 4,
+          "correct": 3
+        }
+      }
+    },
+    "explained-seed29": {
+      "raw_source": "followup/results/explained-seed29-original.json",
+      "strata": {
+        "seen_condition": {
+          "n": 8,
+          "correct": 8
+        },
+        "unseen_condition": {
+          "n": 4,
+          "correct": 4
+        }
+      }
+    }
+  },
+  "item_evidence": [
+    {
+      "test_id": "discount-170-15-180",
+      "subtotal_threshold": [
+        170,
+        180
+      ],
+      "expected": 0,
+      "matching_training_ids": [
+        "discount-170-30-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 0,
+        "explained-seed29": 0
+      }
+    },
+    {
+      "test_id": "discount-200-30-200",
+      "subtotal_threshold": [
+        200,
+        200
+      ],
+      "expected": 20,
+      "matching_training_ids": [
+        "discount-200-40-200",
+        "discount-200-15-200",
+        "discount-200-25-200"
+      ],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-200-20-220",
+      "subtotal_threshold": [
+        200,
+        220
+      ],
+      "expected": 0,
+      "matching_training_ids": [],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 0
+      }
+    },
+    {
+      "test_id": "discount-230-10-220",
+      "subtotal_threshold": [
+        230,
+        220
+      ],
+      "expected": 20,
+      "matching_training_ids": [],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-180-25-180",
+      "subtotal_threshold": [
+        180,
+        180
+      ],
+      "expected": 20,
+      "matching_training_ids": [],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-170-35-180",
+      "subtotal_threshold": [
+        170,
+        180
+      ],
+      "expected": 0,
+      "matching_training_ids": [
+        "discount-170-30-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 0,
+        "explained-seed29": 0
+      }
+    },
+    {
+      "test_id": "discount-150-30-180",
+      "subtotal_threshold": [
+        150,
+        180
+      ],
+      "expected": 0,
+      "matching_training_ids": [
+        "discount-150-10-180",
+        "discount-150-40-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 0,
+        "explained-seed29": 0
+      }
+    },
+    {
+      "test_id": "discount-150-25-180",
+      "subtotal_threshold": [
+        150,
+        180
+      ],
+      "expected": 0,
+      "matching_training_ids": [
+        "discount-150-10-180",
+        "discount-150-40-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 0,
+        "explained-seed29": 0
+      }
+    },
+    {
+      "test_id": "discount-230-20-200",
+      "subtotal_threshold": [
+        230,
+        200
+      ],
+      "expected": 20,
+      "matching_training_ids": [
+        "discount-230-35-200"
+      ],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-220-10-180",
+      "subtotal_threshold": [
+        220,
+        180
+      ],
+      "expected": 20,
+      "matching_training_ids": [
+        "discount-220-30-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-230-15-220",
+      "subtotal_threshold": [
+        230,
+        220
+      ],
+      "expected": 20,
+      "matching_training_ids": [],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    },
+    {
+      "test_id": "discount-230-25-180",
+      "subtotal_threshold": [
+        230,
+        180
+      ],
+      "expected": 20,
+      "matching_training_ids": [
+        "discount-230-35-180"
+      ],
+      "original_final_values": {
+        "explained-seed17": 20,
+        "explained-seed29": 20
+      }
+    }
+  ],
+  "caveats": [
+    "Full question strings and full parameter tuples are disjoint; decision-relevant conditions need not be.",
+    "Four unseen-condition test rows cover only three distinct conditions. This is a tiny, post-hoc descriptive subset, not an independent benchmark.",
+    "Both seeds use the same test items. The counts do not establish memorization or explain the SFT-target difference.",
+    "Original data, protocols, raw outputs, and headline scores are unchanged."
+  ],
+  "provenance": {
+    "data/train.json": {
+      "sha256": "9b41f719734416c4469695237738d506e9b22de7356837fa7feed26b4400e258",
+      "url": "https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/blob/8ff7032e8deceffad2d368ea844160cdfe315608/experiments/sft-explanation/data/train.json"
+    },
+    "data/test.json": {
+      "sha256": "7c0e67b4b302ea382118d78f0205fee75e1b6215d3c2181bee9bbecba740bac2",
+      "url": "https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/blob/8ff7032e8deceffad2d368ea844160cdfe315608/experiments/sft-explanation/data/test.json"
+    },
+    "followup/results/explained-seed17-original.json": {
+      "sha256": "761cb535a8806ec44a92c8c112503f03025f8113f48fe2d9ef27fa3363fc9dbd",
+      "url": "https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/blob/8ff7032e8deceffad2d368ea844160cdfe315608/experiments/sft-explanation/followup/results/explained-seed17-original.json"
+    },
+    "followup/results/explained-seed29-original.json": {
+      "sha256": "f74fcecc92b9a1a1957eb00f24840f062b4d67fa359d858a708064981080bc60",
+      "url": "https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/blob/8ff7032e8deceffad2d368ea844160cdfe315608/experiments/sft-explanation/followup/results/explained-seed29-original.json"
+    }
+  }
+}

@@ -68,3 +68,20 @@ The primary baseline often failed the required output format or reached 128 new 
 ```
 
 The diagnostic output is `results/baseline-512-posthoc.json`. Both budgets remain public. The original strict score must not be interpreted as content accuracy or used to claim reasoning was learned from zero.
+
+
+## 2026-10-01 addendum: decision-relevant split audit
+
+This post-hoc audit reads the published data and outputs; it adds no training or inference. A discount answer depends on the item subtotal and threshold, with shipping explicitly excluded. Grouping by those two quantities gives 20 distinct conditions among 32 training rows and nine among 12 test rows. Eight test rows reuse a training condition; the remaining four rows cover three previously unseen conditions. Full prompts and full parameter tuples remain disjoint, but not every held-out row introduces a new decision-relevant condition.
+
+On those four unseen-condition original questions, the explained checkpoints with seeds 17 and 29 answer three and four correctly, respectively. The subset is tiny and includes a repeated condition; both seeds use the same items. These are descriptive post-hoc counts, not an independent benchmark, evidence of memorization, or an explanation of the training mechanism. The original protocol, data, outputs and headline results are unchanged. A future split should group discount examples by subtotal and threshold before assigning groups to training or test.
+
+[Read the dated report addendum](results/#split-audit-2026-10-01) · [Audit script](split_audit.py) · [Audit result and item-level provenance](split_audit.json)
+
+The script uses only the Python standard library. It verifies SHA-256 fingerprints for both data files and the two archived raw-output files against source commit `8ff7032e8deceffad2d368ea844160cdfe315608`; the result includes commit-pinned source URLs and matching training IDs for every discount test row. A changed source fails the audit. It does not load a model, call the network, or change experiment files.
+
+```sh
+# From experiments/sft-explanation; writes only the requested temporary result:
+python3 split_audit.py > /tmp/sft-split-audit.json
+cmp split_audit.json /tmp/sft-split-audit.json
+```
