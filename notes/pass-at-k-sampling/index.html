@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>pass@10 比 pass@1 低，先检查评测口径 · Nate Zhang</title>
+<meta name="description" content="区分 pass@k、平均正确率与多轮成功率，用构造结果核对 HumanEval 估计器，并说明采样变化不能直接归因于 SFT。">
+<link rel="canonical" href="https://qiangzhang-dev.github.io/notes/pass-at-k-sampling/">
+<meta property="og:title" content="pass@10 比 pass@1 低，先检查评测口径">
+<meta property="og:description" content="区分 pass@k、平均正确率与多轮成功率，用构造结果核对 HumanEval 估计器，并说明采样变化不能直接归因于 SFT。">
+<meta property="og:type" content="article"><meta property="og:url" content="https://qiangzhang-dev.github.io/notes/pass-at-k-sampling/">
+<meta property="article:published_time" content="2026-10-01">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#30343b;font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:820px;padding:42px 28px 70px;margin:auto}nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;margin-bottom:40px}a{color:#1766aa;text-underline-offset:4px}a:focus-visible{outline:2px solid #1766aa;outline-offset:4px}h1{text-wrap:balance;font-size:clamp(28px,5vw,36px);line-height:1.45;letter-spacing:-.025em;color:#181b20;margin:0 0 18px}h1+p{color:#717983;font-size:14px;margin-bottom:32px}h2{font-size:23px;line-height:1.5;margin:36px 0 14px;color:#242a32}p{margin:16px 0}strong{font-weight:600}table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:15px;margin:24px 0}th,td{padding:12px 14px;border-bottom:1px solid #e4e8ed;text-align:left;min-width:95px;vertical-align:top}thead{background:#f5f7fa}code{font-size:.88em;background:#f3f5f7;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#f3f5f7}pre code{padding:0}ul{padding-left:24px}li{margin:12px 0}footer{border-top:1px solid #e4e8ed;padding-top:20px;margin-top:38px;color:#717983;font-size:13px}@media(max-width:600px){main{padding:26px 18px 50px}body{font-size:16px}nav{margin-bottom:30px}th,td{padding:10px 8px}table{font-size:14px}h2{font-size:21px}}@media print{nav,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}table{display:table}}
+
+
+.table-wrap{overflow-x:auto;margin:24px 0}table{display:table;margin:0}th,td{min-width:80px}tbody td:nth-child(2){white-space:nowrap;font-variant-numeric:tabular-nums}caption{text-align:left;color:#69717c;font-size:14px;margin-bottom:8px}ol{padding-left:24px}
+</style></head><body><main>
+<nav aria-label="文章导航"><a href="/">Nate / 个人网站</a><a href="/#writing">全部文章</a><a href="/experiments/sft-explanation/followup/">格式与答案分开评测</a><a href="verify_metrics.py">复核脚本</a></nav>
+<article><h1 id="pass10-比-pass1-低先检查评测口径">pass@10 比 pass@1 低，先检查评测口径</h1>
+<p>2026-10-01 · Qiang (Nate) Zhang</p>
+<p>同一个模型，生成一次时表现不错，生成十次后报出来的分数却更低。看到这样的结果，很容易先怀疑采样不稳定，或者 SFT 把模型训坏了。</p>
+<p>我会先问一句：这里的“十次”，最后是怎么汇总的？</p>
+<p>如果统计的是同一批候选里“至少一个正确”，增加候选不会让已经答对的题重新变错。真正需要检查的，是指标定义、采样设置、样本是否来自同一批，以及多轮对话究竟算了什么。下面只讨论这些判断方法，数值例子都是构造数据，不是模型实测结果。</p>
+<h2 id="同一批候选passk-为什么不会下降">同一批候选，pass@k 为什么不会下降</h2>
+<p>按 HumanEval 使用的定义，每道题生成 k 个候选，只要其中一个通过测试，这道题就算解决；最后对题目求平均。<a href="https://arxiv.org/html/2107.03374v2#S2.SS1">HumanEval 论文，第 2.1 节</a></p>
+<p>假设每道题已经存下十个候选，判分也固定。取前一个、前两个，直到前十个，检查是否至少有一个正确。前一个已经正确时，后面九个即使全错，也不会取消那个正确答案。</p>
+<p>因此，这种“同一批候选的前缀”统计，必然满足 pass@1 ≤ pass@2 ≤ … ≤ pass@10。候选高度相似，可能减少新增候选带来的收益，但不会破坏这条关系；这里也不需要假设候选相互独立。</p>
+<p>如果同一批数据算出了相反结果，应先查汇总实现、题目对齐和判分记录，不能用“模型不稳定”解释。</p>
+<p>但如果 pass@1 和 pass@10 分别来自两次独立运行，就没有逐条样本的包含关系。即使生成分布相同，有限样本估计也可能偶然倒挂。要区分“理论指标应当单调”和“两个有抽样误差的数字必须按顺序排列”。</p>
+<h2 id="四道题就能看出几种口径的差别">四道题，就能看出几种口径的差别</h2>
+<p>下面每行是一道题的十次独立作答位置，1 表示正确，0 表示错误。这里只构造结果，不模拟模型。</p>
+<div class="table-wrap" role="region" aria-label="四道题的构造结果" tabindex="0"><table>
+<thead>
+<tr class="header">
+<th>题目</th>
+<th>十次结果，按生成顺序排列</th>
+<th style="text-align: right;">正确次数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>1 0 0 0 0 0 0 0 0 0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>0 1 1 0 0 0 0 0 0 0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>0 0 0 0 0 0 0 0 0 0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>这批结果可以得到四个数字：</p>
+<ul>
+<li>只看每题第一个候选：A、C 正确，2/4 = 50%</li>
+<li>每题十个候选里至少一个正确：A、B、C 成功，3/4 = 75%</li>
+<li>把四十次作答的正确数求平均：13/40 = 32.5%</li>
+<li>要求一题十次全部正确：只有 C 满足，1/4 = 25%</li>
+</ul>
+<p>75% 对应这批数据的 pass@10。32.5% 是重复作答的平均正确率，25% 是十次全对率。后两者低于 50%，都不违反 pass@k 的单调性，因为统计的事件不同。</p>
+<p>重复作答的平均正确率也有用：它关心随机返回一个答案时的可靠程度。至少一个正确则关心候选集合有没有覆盖到正确解。若系统还要用一个排序器挑出最终答案，需要另外评测“被选中的答案是否正确”；候选里存在正确答案，不保证排序器选中了它。</p>
+<h2 id="humaneval-的估计器还多了一层区别">HumanEval 的估计器，还多了一层区别</h2>
+<p>HumanEval 没有只依赖一次 k 个样本的成功或失败。它先为每道题采 n 个样本，记录其中 c 个正确，再计算：</p>
+<p><strong>该题的 pass@k 估计值 = 1 − C(n−c, k) / C(n, k)</strong></p>
+<p>C(a, b) 表示从 a 个元素中选 b 个的组合数；不够选时记为 0，且要求 1 ≤ k ≤ n。直观上，分数是“从这 n 个候选里均匀选 k 个，至少选中一个正确答案”的概率。对各题的估计值求平均，得到整体结果。论文说明了它的无偏性，官方实现也按题计算后取均值。<a href="https://arxiv.org/html/2107.03374v2#S2.SS1">论文公式 (1)</a> · <a href="https://github.com/openai/human-eval/blob/6d43fb980f9fee3c892a914eda09951f772ad10d/human_eval/evaluation.py#L11-L33">官方评测代码</a></p>
+<p>在上面的数据里，每题 n = 10。这个估计器的 pass@1 是各题 c/10 的平均值，也就是 32.5%；pass@10 是 75%。它没有把“第一个候选的 50%”当作 pass@1 的唯一估计方法。</p>
+<p>无偏性的统计解释依赖每题在固定生成分布下独立采样。对一批相关候选，组合公式仍能描述从现有集合抽子集的结果，但不能直接沿用对独立新样本的无偏估计解释。无论采用哪种解释，同一组 n、c 算出的曲线仍然不会随 k 增大而下降。</p>
+<p>还有一个容易混用的公式：如果某一道题单次成功的真实概率是 p，并且各次独立，那么至少成功一次的概率是 1 − (1−p)^k。这里的 p 是真实概率。直接把有限样本的 c/n 代进去，并不等同于上面的无偏估计器。各题难度不同时，也不能先求一个全局平均正确率，再代入公式得到整体 pass@k。</p>
+<h2 id="改了-temperature比较条件就变了">改了 temperature，比较条件就变了</h2>
+<p>temperature 调整 token 概率分布，top_k 和 top_p 会筛选采样候选。还要检查是否真的启用了采样：在 Transformers 中，do_sample=False 且 num_beams=1 对应贪心解码。参数应按实际后端和版本核对。<a href="https://huggingface.co/docs/transformers/v4.57.1/en/main_classes/text_generation">Transformers v4.57.1 生成文档</a></p>
+<p>因此，“低温或贪心的一次作答”和“另一套参数下的十次采样”，测的是不同生成策略。不能只凭名字里的 1 和 10 要求后者更高。</p>
+<p>举一个明确假设的概率例子：某题在策略 A 下单次正确概率是 0.8，在策略 B 下是 0.1。B 独立采十次，至少一次正确的概率是 1 − 0.9^10，约 65.1%，仍然低于 A 的 80%。这里没有违反单调性，也没有发生任何训练。</p>
+<p>HumanEval 原论文也研究了不同温度对不同 k 的影响；这说明采样策略值得比较，不代表提高温度必然提高某个模型的 pass@10。<a href="https://arxiv.org/html/2107.03374v2#S3.SS3">论文第 3.3 节</a></p>
+<p>记录评测时，我会把模型版本、完整输入与聊天模板、实际生效的生成配置、每次生成预算、停止条件和随机种子一起保存。只记命令行里显式传入的三个参数不够，模型配置和后端默认值也可能参与生成。</p>
+<h2 id="十轮对话要先说明一次尝试是什么">十轮对话，要先说明一次“尝试”是什么</h2>
+<p>十次从相同上下文重新开始的作答，与一段连续十轮的对话，是两种实验。</p>
+<p>后一种情况下，前面的输出会进入后续上下文，模型还可能收到纠错、追问或工具反馈。第十轮已经不是第一轮问题上的又一次同分布抽样。若要求十轮全部正确，衡量的就是整段对话成功率；要求越多，它完全可能低于第一轮正确率。</p>
+<p>一个边界需要保留：如果只是对同一条已记录轨迹，统计“截至第 k 轮是否曾经成功”，这个事件仍然单调。反馈和相关性改变的是概率模型，不会让已经发生过的成功消失。若只判断最终答案是否正确，后续修改则可能把正确答案改错。</p>
+<p>做多轮评测时，至少分开记录每轮正确率、首次失败位置和整段成功率，并写清每轮分母是否只包括仍在继续的对话。若要计算“十次完整对话中至少一次成功”，一次候选应是一整段对话，各次尝试从约定的初始状态重置。</p>
+<h2 id="想判断-sft-是否退化补哪个对照">想判断 SFT 是否退化，补哪个对照</h2>
+<p>只有“SFT 后低温一次作答高分、另一套采样十次低分”，还分不清是解码策略、判分、任务变化，还是训练引入的问题。</p>
+<p>一个小而有用的对照是：对训练前基线和目标 checkpoint，都跑相同的贪心设置，再都跑相同的一套采样设置。题目、输入、生成预算和判分规则保持可比。对每个采样设置，复用同一批候选计算 pass@1、pass@5、pass@10，并保留逐题结果。</p>
+<p>这样能回答更具体的问题：训练后的变化是否在贪心和采样下都出现，是否只集中在某些题型，以及分数变化是否伴随格式失败、截断、重复输出或后续轮次失误。报告实际样本数，并通过重复运行或合适的不确定性估计检查差异是否稳定；重采样时保留题目内的候选分组。</p>
+<p>如果同设置的配对比较仍持续下降，才有依据继续检查训练数据、监督范围、学习率或遗忘等解释。要归因于其中某一项，还需要相应的控制实验。仅凭 pass@1 与 pass@10 的一次倒挂，无法证明 SFT 损害了推理能力。</p>
+<p>我会把排查顺序压缩成三步：先拿原始候选重算指标，再对齐生成条件，最后做训练前后的配对比较。这样每一步得到的结论，都能对应到真正测过的东西。</p>
+<h2 id="复核与相关记录">复核与相关记录</h2>
+<p>本文的 <a href="verify_metrics.py">Python 复核脚本</a> 只使用构造的二元结果，校验上述百分比、组合估计器与单调性，不调用模型，也不运行模型生成代码。</p>
+<p>此前的<a href="https://qiangzhang-dev.github.io/experiments/sft-explanation/followup/">格式与最终答案分开评测</a>记录了另一类口径问题；<a href="https://qiangzhang-dev.github.io/notes/sft-rewrite-review/">训练答案改写检查</a>则讨论数据侧需要保留的证据。这些内容与本文的采样定义互相补充，不能彼此替代为训练收益的证据。</p>
+</article>
+<footer>Qiang (Nate) Zhang · <a href="/">返回个人网站</a> · <a href="https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/notes/pass-at-k-sampling">文章与脚本源码</a></footer>
+</main></body></html>
