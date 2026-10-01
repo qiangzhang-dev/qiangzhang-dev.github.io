@@ -6,8 +6,9 @@ This repository hosts my personal website, technical notes and small reproducibl
 
 ## Start here
 
-| Topic | Read the results | Inspect the sources |
+| Topic | Read the work | Inspect the sources |
 | --- | --- | --- |
+| Preparing a speech-input SFT sample | [From text question to speech input](https://qiangzhang-dev.github.io/notes/speech-sft-sample/) | [Article source](https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/notes/speech-sft-sample) · Constructed example; no audio generation or training run |
 | SFT training targets and question rewording | [First training comparison](https://qiangzhang-dev.github.io/experiments/sft-explanation/results/) · [Rewording and scoring follow-up](https://qiangzhang-dev.github.io/experiments/sft-explanation/followup/) | [Training code, data and raw outputs](https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/experiments/sft-explanation) |
 | Reviewing rewritten SFT answers | [Browser checker](https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/) · [Quick start](https://qiangzhang-dev.github.io/tools/sft-rewrite-checker/guide/) · [Worked examples](https://qiangzhang-dev.github.io/notes/sft-rewrite-review/) | [Tool code and examples](https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/tools/sft-rewrite-checker) · [Article source](https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/notes/sft-rewrite-review) |
 | Whisper beam-size comparison | [Experiment](https://qiangzhang-dev.github.io/notes/whisper-beam/) · [All 40 recordings](https://qiangzhang-dev.github.io/notes/whisper-beam/report/) | [Scripts](https://github.com/qiangzhang-dev/speech-eval-demo/tree/main/experiments/librispeech-beam) · [Records](https://github.com/qiangzhang-dev/qiangzhang-dev.github.io/tree/main/notes/whisper-beam) |
