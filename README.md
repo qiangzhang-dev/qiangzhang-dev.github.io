@@ -31,3 +31,25 @@ A responsive, dependency-free website hosted on GitHub Pages.
 - `.nojekyll` keeps deployment as plain static files.
 
 The site uses system fonts and no analytics, external scripts, or cookies.
+
+### Offline integrity checks
+
+Run from the repository root with Python 3.9 or newer; no packages or network access are required:
+
+```sh
+python3 scripts/check_site.py
+python3 -m unittest discover -s tests -v
+```
+
+The checker exits nonzero and prints the source path when a check fails. It checks:
+
+- Local HTML `href`, `src` and `poster` targets, including relative links, same-host absolute links, downloads and HTML fragment IDs (or legacy named anchors).
+- One nonempty document title and one self-canonical per public page, with no duplicate titles or canonical URLs.
+- Sitemap coverage of standalone `.html` pages, including articles and generated reports, and stale or duplicate sitemap entries. Pages marked `noindex` are not included in the sitemap; their local links are still checked.
+- The published AIR-Fusion author order in Highwire citation tags, JSON-LD and visible BibTeX, using the [official IJCAI record](https://www.ijcai.org/proceedings/2026/105). This check is scoped to `air-fusion/index.html`, not future publications.
+
+Page discovery excludes hidden directories, Python/Node dependency and cache directories, and the preserved `experiments/sft-explanation/followup/zhihu-article.html` publication fragment documented in its adjacent README. New standalone pages are discovered automatically. Add deliberate source-fragment exclusions with a reason in `EXCLUDED_HTML`; do not exclude a public article to silence a missing sitemap entry.
+
+`/subtracker` and its child routes are served by the separate [SubTracker repository](https://github.com/qiangzhang-dev/subtracker), so they are the only same-host route exception. Other external sites are skipped. The check does not verify remote availability, run JavaScript, inspect dynamically generated links, parse CSS URLs or `srcset`, or replace browser/accessibility tests. It does not run the model experiments.
+
+The script resolves the repository from its own location; `--root /path/to/site` can check another source tree. Mutation tests use temporary fixtures to prove that missing paths/anchors, metadata errors and sitemap omissions fail, while intended exclusions and valid link forms pass. No GitHub workflow is installed or changed by this local command.
